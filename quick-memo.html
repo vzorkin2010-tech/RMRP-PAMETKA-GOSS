@@ -33,7 +33,7 @@
         }
 
         .main {
-            max-width: 1400px;
+            max-width: 1600px; /* увеличено для более широких колонок */
             width: 100%;
             z-index: 2;
         }
@@ -69,24 +69,20 @@
         .column {
             background-color: rgba(10, 10, 10, 0.5);
             border: 1px solid #333333;
-            padding: 15px;
-            max-height: 900px;
-            overflow-y: auto;
+            padding: 20px;
+            /* Убрана максимальная высота и прокрутка — колонки занимают всю высоту контента */
         }
 
         .column h2 {
-            font-size: 1.6rem;
-            font-weight: 700;
+            font-size: 1.8rem;
+            font-weight: normal; /* не жирный */
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             border-left: 4px solid #777777;
-            padding-left: 10px;
+            padding-left: 15px;
             color: #dddddd;
-            position: sticky;
-            top: 0;
-            background-color: #0a0a0a;
-            z-index: 5;
+            /* Иконки удалены */
         }
 
         .article-item {
@@ -101,7 +97,7 @@
         .article-header {
             display: flex;
             align-items: baseline;
-            gap: 6px;
+            gap: 8px;
             flex-wrap: wrap;
             margin-bottom: 2px;
         }
@@ -123,10 +119,6 @@
             text-transform: uppercase;
             letter-spacing: 0.02em;
             color: #ffffff;
-        }
-
-        .article-desc {
-            display: none;
         }
 
         .article-penalty {
@@ -155,9 +147,6 @@
             .two-columns {
                 grid-template-columns: 1fr;
             }
-            .column {
-                max-height: none;
-            }
         }
 
         @media (max-width: 480px) {
@@ -174,9 +163,9 @@
         <div class="main__divider"></div>
 
         <div class="two-columns">
-            <!-- ЛЕВАЯ КОЛОНКА - УГОЛОВНЫЙ КОДЕКС РФ (все части отдельно) -->
+            <!-- ЛЕВАЯ КОЛОНКА - УГОЛОВНЫЙ КОДЕКС РФ -->
             <div class="column">
-                <h2>⚡ УГОЛОВНЫЙ КОДЕКС РФ</h2>
+                <h2>УГОЛОВНЫЙ КОДЕКС РФ</h2>
 
                 <!-- 37.1 -->
                 <div class="article-item">
@@ -1059,7 +1048,7 @@
 
             <!-- ПРАВАЯ КОЛОНКА - КОАП РФ (без ПДД) -->
             <div class="column">
-                <h2>📋 КОДЕКС ОБ АДМИНИСТРАТИВНЫХ ПРАВОНАРУШЕНИЯХ</h2>
+                <h2>КОДЕКС ОБ АДМИНИСТРАТИВНЫХ ПРАВОНАРУШЕНИЯХ</h2>
 
                 <!-- 4.7 -->
                 <div class="article-item">
