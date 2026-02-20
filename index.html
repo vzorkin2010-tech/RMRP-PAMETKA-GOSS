@@ -58,7 +58,7 @@
             width: 100%;
             text-align: center;
             z-index: 2;
-            flex: 1 0 auto; /* чтобы прижать футер, но у нас нет футера */
+            flex: 1 0 auto;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -80,28 +80,12 @@
             color: #ffffff;
         }
 
-        /* Подзаголовок */
-        .main__sub {
-            font-size: 1.6rem;
-            font-weight: 400;
-            color: #cccccc;
-            text-transform: uppercase;
-            letter-spacing: 0.3em;
-            margin-top: 1rem;
-            word-break: break-word;
-        }
-
         /* Разделитель */
         .main__divider {
             width: 150px;
             height: 1px;
             background-color: #555555;
             margin: 2.5rem auto 1.8rem;
-        }
-
-        .rmrp {
-            font-weight: 600;
-            color: #ffffff;
         }
 
         /* Дисклеймер (фанатский) */
@@ -204,10 +188,6 @@
             .main__title {
                 border-bottom-width: 2px;
             }
-            .main__sub {
-                font-size: 1.2rem;
-                letter-spacing: 0.15em;
-            }
             .fan-disclaimer {
                 font-size: 0.7rem;
                 letter-spacing: 0.1em;
@@ -232,9 +212,6 @@
 
     <div class="main">
         <h1 class="main__title">Памятка для госсника.</h1>
-        <div class="main__sub">
-            <span class="rmrp">RMRP</span> · государственный служащий
-        </div>
         <div class="main__divider"></div>
         
         <!-- Фанатский дисклеймер -->
