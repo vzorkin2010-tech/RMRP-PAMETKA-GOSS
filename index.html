@@ -3,16 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Памятка · госслужащий RMRP · фан-сайт</title>
+    <title>Памятка для госсника · RMRP</title>
     <style>
-        /* Полный сброс отступов */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
-        /* Чёрный фон с мягкими световыми пятнами */
         body {
             background-color: #000000;
             background-image: 
@@ -29,11 +26,13 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            line-height: 1.4;
             padding: 20px;
         }
-
-        /* Верхнее уведомление о конфиденциальности */
+        .main {
+            max-width: 1200px;
+            width: 100%;
+            text-align: center;
+        }
         .privacy-notice {
             text-align: center;
             font-size: 0.7rem;
@@ -41,30 +40,15 @@
             text-transform: uppercase;
             letter-spacing: 0.15em;
             max-width: 900px;
-            margin-bottom: 20px;
+            margin: 0 auto 20px;
             border-bottom: 1px solid #333333;
             padding-bottom: 12px;
             width: 100%;
         }
-
         .privacy-notice span {
             color: #555555;
             margin: 0 6px;
         }
-
-        /* Центровщик */
-        .main {
-            max-width: 1200px;
-            width: 100%;
-            text-align: center;
-            z-index: 2;
-            flex: 1 0 auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        /* Главный текст */
         .main__title {
             font-size: clamp(3.5rem, 15vw, 8rem);
             font-weight: 900;
@@ -75,20 +59,14 @@
             border-bottom: 3px solid #aaaaaa;
             display: inline-block;
             padding-bottom: 0.3rem;
-            padding-left: 0.2rem;
-            padding-right: 0.2rem;
             color: #ffffff;
         }
-
-        /* Разделитель */
         .main__divider {
             width: 150px;
             height: 1px;
             background-color: #555555;
             margin: 2.5rem auto 1.8rem;
         }
-
-        /* Дисклеймер (фанатский) */
         .fan-disclaimer {
             font-size: 0.85rem;
             color: #666666;
@@ -102,12 +80,9 @@
             margin-right: auto;
             line-height: 1.6;
         }
-
         .fan-disclaimer span {
             color: #888888;
         }
-
-        /* Строка авторства (Росгвардия, Рублёвка) */
         .authorship {
             font-size: 0.8rem;
             color: #555555;
@@ -116,13 +91,10 @@
             margin-top: 1rem;
             margin-bottom: 0.5rem;
         }
-
         .authorship span {
             color: #777777;
             margin: 0 0.5rem;
         }
-
-        /* Меню категорий */
         .category-menu {
             display: flex;
             flex-wrap: wrap;
@@ -131,8 +103,6 @@
             margin-top: 40px;
             margin-bottom: 20px;
         }
-
-        /* Стиль кнопки */
         .category-button {
             background-color: transparent;
             border: 2px solid #555555;
@@ -152,20 +122,19 @@
             min-width: 200px;
             text-align: center;
         }
-
-        /* Иконка (белая) */
         .category-button .icon {
             color: #ffffff;
             font-size: 1.4rem;
             line-height: 1;
         }
-
         .category-button:hover {
             background-color: #333333;
             border-color: #777777;
             color: #ffffff;
         }
-
+        a.category-button {
+            cursor: pointer;
+        }
         @media (max-width: 700px) {
             .category-menu {
                 flex-direction: column;
@@ -177,7 +146,6 @@
                 max-width: 300px;
             }
         }
-
         @media (max-width: 480px) {
             .privacy-notice {
                 font-size: 0.6rem;
@@ -196,43 +164,32 @@
             .authorship {
                 font-size: 0.65rem;
             }
-            .category-button {
-                font-size: 1rem;
-                padding: 10px 20px;
-            }
         }
     </style>
 </head>
 <body>
-    <!-- Уведомление о конфиденциальности (самый верх) -->
-    <div class="privacy-notice">
-        <span>⸻</span> САЙТ НЕ СОБИРАЕТ И НЕ ОБРАБАТЫВАЕТ ПЕРСОНАЛЬНЫЕ ДАННЫЕ, IP-АДРЕСА И ПРОЧУЮ ТЕХНИЧЕСКУЮ ИНФОРМАЦИЮ <span>⸻</span><br>
-        РЕСУРС НОСИТ ИСКЛЮЧИТЕЛЬНО ВИЗУАЛЬНО-ИНФОРМАЦИОННЫЙ ХАРАКТЕР ДЛЯ ГОСУДАРСТВЕННЫХ СЛУЖАЩИХ ПРОЕКТА RMRP
-    </div>
-
     <div class="main">
+        <div class="privacy-notice">
+            <span>⸻</span> САЙТ НЕ СОБИРАЕТ ПЕРСОНАЛЬНЫЕ ДАННЫЕ, IP-АДРЕСА И ПРОЧУЮ ТЕХНИЧЕСКУЮ ИНФОРМАЦИЮ <span>⸻</span><br>
+            РЕСУРС НОСИТ ИСКЛЮЧИТЕЛЬНО ВИЗУАЛЬНО-ИНФОРМАЦИОННЫЙ ХАРАКТЕР ДЛЯ ГОСУДАРСТВЕННЫХ СЛУЖАЩИХ ПРОЕКТА RMRP
+        </div>
+
         <h1 class="main__title">Памятка для госсника.</h1>
         <div class="main__divider"></div>
-        
-        <!-- Фанатский дисклеймер -->
+
         <div class="fan-disclaimer">
             <span>⸻</span> НЕОФИЦИАЛЬНАЯ ФАНАТСКАЯ СТРАНИЦА <span>⸻</span><br>
             Проект RMRP для GTA 5 RP · Создано поклонником · Не имеет отношения к администрации проекта
         </div>
 
-        <!-- Строка авторства: Росгвардия, сервер Рублёвка -->
         <div class="authorship">
             <span>⸻</span> СОЗДАНО РОСГВАРДИЕЙ · ПЕРВЫЙ СЕРВЕР РУБЛЁВКА <span>⸻</span>
         </div>
 
-        <!-- Меню категорий кнопок -->
         <div class="category-menu">
-            <!-- Кнопка КУРС МОЛОДОГО БОЙЦА с белой иконкой (звезда) -->
-            <div class="category-button">
-                <span class="icon">★</span> КУРС МОЛОДОГО БОЙЦА
-            </div>
-            <!-- Остальные кнопки -->
-            <div class="category-button">Быстрая Памятка</div>
+            <div class="category-button"><span class="icon">★</span> КУРС МОЛОДОГО БОЙЦА</div>
+            <!-- Кнопка быстрой памятки теперь ссылка на quick-memo.html -->
+            <a href="quick-memo.html" class="category-button">Быстрая Памятка</a>
             <div class="category-button">Памятка налётов</div>
             <div class="category-button">Памятка поставок</div>
             <div class="category-button">Памятка повышения</div>
