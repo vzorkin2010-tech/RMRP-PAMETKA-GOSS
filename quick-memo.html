@@ -1,0 +1,2126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Быстрая памятка · госслужащий RMRP</title>
+    <style>
+        /* ===== ОБЩИЕ СТИЛИ ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000000;
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.08) 0%, transparent 60%),
+                radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.05) 0%, transparent 70%),
+                radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.05) 0%, transparent 70%),
+                radial-gradient(circle at 10% 80%, rgba(255, 255, 255, 0.04) 0%, transparent 80%),
+                radial-gradient(circle at 90% 20%, rgba(255, 255, 255, 0.04) 0%, transparent 80%),
+                radial-gradient(circle at 40% 60%, rgba(255, 255, 255, 0.03) 0%, transparent 90%),
+                radial-gradient(circle at 70% 40%, rgba(255, 255, 255, 0.03) 0%, transparent 90%);
+            color: #ffffff;
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            line-height: 1.5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .main {
+            max-width: 1400px;
+            width: 100%;
+            z-index: 2;
+        }
+
+        /* ===== ВЕРХНЯЯ ЧАСТЬ ===== */
+        .privacy-notice {
+            text-align: center;
+            font-size: 0.7rem;
+            color: #777777;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            max-width: 900px;
+            margin: 0 auto 20px;
+            border-bottom: 1px solid #333333;
+            padding-bottom: 12px;
+            width: 100%;
+        }
+
+        .privacy-notice span {
+            color: #555555;
+            margin: 0 6px;
+        }
+
+        .main__title {
+            font-size: clamp(2.5rem, 10vw, 5rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            border-bottom: 3px solid #aaaaaa;
+            display: inline-block;
+            padding-bottom: 0.3rem;
+            color: #ffffff;
+        }
+
+        .main__divider {
+            width: 150px;
+            height: 1px;
+            background-color: #555555;
+            margin: 1.5rem auto 2rem;
+        }
+
+        .fan-disclaimer {
+            font-size: 0.85rem;
+            color: #666666;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            border-top: 1px solid #333333;
+            padding-top: 1.8rem;
+            margin-top: 1rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .fan-disclaimer span {
+            color: #888888;
+        }
+
+        .authorship {
+            font-size: 0.8rem;
+            color: #555555;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin: 1rem 0 0.5rem;
+            text-align: center;
+        }
+
+        .authorship span {
+            color: #777777;
+            margin: 0 0.5rem;
+        }
+
+        /* ===== МЕНЮ КАТЕГОРИЙ (как на главной) ===== */
+        .category-menu {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px 0 30px;
+        }
+
+        .category-button {
+            background-color: transparent;
+            border: 2px solid #555555;
+            color: #eeeeee;
+            font-size: 1.2rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 12px 28px;
+            cursor: default;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: none;
+            min-width: 200px;
+            text-align: center;
+        }
+
+        .category-button .icon {
+            color: #ffffff;
+            font-size: 1.4rem;
+            line-height: 1;
+        }
+
+        .category-button:hover {
+            background-color: #333333;
+            border-color: #777777;
+            color: #ffffff;
+        }
+
+        /* ===== ДВУХКОЛОНОЧНАЯ СЕТКА ===== */
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .column {
+            background-color: rgba(10, 10, 10, 0.5);
+            border: 1px solid #333333;
+            padding: 20px;
+            max-height: 800px;
+            overflow-y: auto;
+        }
+
+        .column h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 20px;
+            border-left: 4px solid #777777;
+            padding-left: 15px;
+            color: #dddddd;
+            position: sticky;
+            top: 0;
+            background-color: #0a0a0a;
+            z-index: 5;
+        }
+
+        /* Стили для карточек статей */
+        .article-item {
+            border-bottom: 1px dashed #444444;
+            padding: 12px 0;
+        }
+
+        .article-item:last-child {
+            border-bottom: none;
+        }
+
+        .article-header {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 5px;
+        }
+
+        .article-num {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #cccccc;
+            font-family: 'Courier New', monospace;
+            background-color: #1e1e1e;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .article-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #ffffff;
+        }
+
+        .article-desc {
+            font-size: 0.9rem;
+            color: #bbbbbb;
+            margin: 5px 0 8px;
+        }
+
+        .article-penalty {
+            font-size: 0.95rem;
+            background-color: #1e1e1e;
+            padding: 6px 12px;
+            border-left: 3px solid #555555;
+            margin-top: 5px;
+        }
+
+        .penalty-part {
+            margin: 3px 0;
+        }
+
+        .stars {
+            color: #ff4d4d; /* красный */
+            font-weight: 700;
+        }
+
+        .fine {
+            color: #ffd966; /* жёлтый */
+            font-weight: 700;
+        }
+
+        .note {
+            color: #aaaaaa;
+            font-size: 0.85rem;
+            margin-top: 4px;
+        }
+
+        /* адаптация */
+        @media (max-width: 900px) {
+            .two-columns {
+                grid-template-columns: 1fr;
+            }
+            .column {
+                max-height: none;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .category-menu {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            .category-button {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .privacy-notice {
+                font-size: 0.6rem;
+                letter-spacing: 0.1em;
+                padding-bottom: 8px;
+                margin-bottom: 15px;
+            }
+            .main__title {
+                font-size: 2.2rem;
+                border-bottom-width: 2px;
+            }
+            .fan-disclaimer {
+                font-size: 0.7rem;
+                letter-spacing: 0.1em;
+                padding-top: 1.2rem;
+            }
+            .authorship {
+                font-size: 0.65rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <!-- Верхнее уведомление о конфиденциальности -->
+        <div class="privacy-notice">
+            <span>⸻</span> САЙТ НЕ СОБИРАЕТ ПЕРСОНАЛЬНЫЕ ДАННЫЕ · IP НЕ СОХРАНЯЮТСЯ <span>⸻</span><br>
+            ИНФОРМАЦИОННЫЙ РЕСУРС ДЛЯ ГОСУДАРСТВЕННЫХ СЛУЖАЩИХ ПРОЕКТА RMRP
+        </div>
+
+        <h1 class="main__title">Быстрая памятка</h1>
+        <div class="main__divider"></div>
+
+        <!-- Фанатский дисклеймер -->
+        <div class="fan-disclaimer">
+            <span>⸻</span> НЕОФИЦИАЛЬНАЯ ФАНАТСКАЯ СТРАНИЦА <span>⸻</span><br>
+            Проект RMRP для GTA 5 RP · Создано поклонником · Не имеет отношения к администрации
+        </div>
+        <div class="authorship">
+            <span>⸻</span> СОЗДАНО РОСГВАРДИЕЙ · ПЕРВЫЙ СЕРВЕР РУБЛЁВКА <span>⸻</span>
+        </div>
+
+        <!-- Меню категорий (кнопки) -->
+        <div class="category-menu">
+            <div class="category-button"><span class="icon">★</span> КУРС МОЛОДОГО БОЙЦА</div>
+            <div class="category-button">Быстрая Памятка</div>
+            <div class="category-button">Памятка налётов</div>
+            <div class="category-button">Памятка поставок</div>
+            <div class="category-button">Памятка повышения</div>
+            <div class="category-button">Памятка Порядка задержаний</div>
+            <div class="category-button">Памятка порядка ареста</div>
+            <div class="category-button">Памятка прав задерженого</div>
+        </div>
+
+        <!-- ДВЕ КОЛОНКИ: УК РФ и КоАП РФ -->
+        <div class="two-columns">
+            <!-- ЛЕВАЯ КОЛОНКА - УГОЛОВНЫЙ КОДЕКС -->
+            <div class="column">
+                <h2>⚡ УГОЛОВНЫЙ КОДЕКС РФ</h2>
+                
+                <!-- Статья 37 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 37</span>
+                        <span class="article-name">Убийство</span>
+                    </div>
+                    <div class="article-desc">Умышленное причинение смерти другому человеку.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="stars">ч.1 — ★★★★ (7 лет)</span></div>
+                        <div class="penalty-part"><span class="stars">ч.2 (два+ лиц) — ★★★★ (8 лет)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 38 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 38</span>
+                        <span class="article-name">Тяжкий вред здоровью</span>
+                    </div>
+                    <div class="article-desc">Причинение вреда, опасного для жизни или повлёкшего потерю сознания.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="stars">ч.1 — ★★★ (5 лет)</span></div>
+                        <div class="penalty-part"><span class="stars">ч.2 — ★★★★ (7 лет)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 39 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 39</span>
+                        <span class="article-name">Угроза убийством</span>
+                    </div>
+                    <div class="article-desc">Угроза, если имелись основания опасаться её осуществления.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="stars">★★★ (4 года)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 40 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 40</span>
+                        <span class="article-name">Изнасилование</span>
+                    </div>
+                    <div class="article-desc">Половое сношение с насилием или угрозой.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="stars">★★★ (6 лет)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 41 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 41</span>
+                        <span class="article-name">Похищение человека</span>
+                    </div>
+                    <div class="article-desc">Похищение человека.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="stars">ч.1 — ★★★ (6 лет)</span></div>
+                        <div class="penalty-part"><span class="stars">ч.2 — ★★★★ (6 лет)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 42 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 42</span>
+                        <span class="article-name">Незаконное лишение свободы</span>
+                    </div>
+                    <div class="article-desc">Лишение свободы, не связанное с похищением.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="stars">★★★ (4 года)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 43 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 43</span>
+                        <span class="article-name">Нарушение неприкосновенности жилища</span>
+                    </div>
+                    <div class="article-desc">Незаконное проникновение в жилище.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 20 000 руб.</span> или <span class="stars">★★ (3 года)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 44 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 44</span>
+                        <span class="article-name">Кража</span>
+                    </div>
+                    <div class="article-desc">Тайное хищение чужого имущества.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 30 000 руб.</span> или <span class="stars">★★ (3 года)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 45 (присвоение/растрата + мошенничество) -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 45</span>
+                        <span class="article-name">Присвоение/растрата, мошенничество</span>
+                    </div>
+                    <div class="article-desc">Присвоение вверенного имущества; мошенничество.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part">Присвоение: <span class="fine">штраф 50 000 руб.</span> или <span class="stars">★★ (3 года)</span></div>
+                        <div class="penalty-part">Мошенничество: <span class="fine">штраф 50 000 руб.</span> или <span class="stars">★★★ (3 года)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 46 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 46</span>
+                        <span class="article-name">Грабеж</span>
+                    </div>
+                    <div class="article-desc">Открытое хищение чужого имущества.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="stars">ч.1 — ★★ (4 года)</span></div>
+                        <div class="penalty-part"><span class="stars">ч.2 — ★★★ (5 лет)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 47 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 47</span>
+                        <span class="article-name">Разбой</span>
+                    </div>
+                    <div class="article-desc">Нападение с насилием, опасным для жизни.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="stars">ч.1 — ★★★ (5 лет)</span></div>
+                        <div class="penalty-part"><span class="stars">ч.2 — ★★★★ (6 лет)</span></div>
+                        <div class="penalty-part"><span class="stars">ч.3 — ★★★★ (7 лет)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 48 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 48</span>
+                        <span class="article-name">Уничтожение имущества</span>
+                    </div>
+                    <div class="article-desc">Уничтожение чужого имущества, значительный ущерб.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 35 000 руб.</span> или <span class="stars">★★ (2 года)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 48-1 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 48-1</span>
+                        <span class="article-name">Порча госимущества</span>
+                    </div>
+                    <div class="article-desc">Уничтожение или повреждение государственного имущества.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 50 000 руб.</span> или <span class="stars">★★★ (3 года)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 49 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 49</span>
+                        <span class="article-name">Угон автомобиля</span>
+                    </div>
+                    <div class="article-desc">Неправомерное завладение ТС без хищения.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part">ч.1: <span class="fine">штраф 35 000 руб.</span> или <span class="stars">★★ (2 года)</span></div>
+                        <div class="penalty-part">ч.2 (служебный): <span class="fine">штраф 100 000 руб.</span> или <span class="stars">★★★★ (4 года)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 53 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 53</span>
+                        <span class="article-name">Террористический акт</span>
+                    </div>
+                    <div class="article-desc">Взрыв, поджог в целях воздействия на власть.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="stars">★★★★★★ (8 лет)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 55 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 55</span>
+                        <span class="article-name">Захват заложника</span>
+                    </div>
+                    <div class="article-desc">Захват или удержание лица в качестве заложника.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="stars">★★★★★★ (7 лет)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 56 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 56</span>
+                        <span class="article-name">Ложное сообщение о теракте</span>
+                    </div>
+                    <div class="article-desc">Заведомо ложное сообщение о готовящемся теракте.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="stars">★★★★ (6 лет)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 57 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 57</span>
+                        <span class="article-name">Незаконное вооружённое формирование</span>
+                    </div>
+                    <div class="article-desc">Создание вооружённого формирования, не предусмотренного законом.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="stars">★★★★★ (7 лет)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 58 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 58</span>
+                        <span class="article-name">Бандитизм</span>
+                    </div>
+                    <div class="article-desc">Создание устойчивой вооружённой группы.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="stars">★★★★★★ (8 лет)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 60 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 60</span>
+                        <span class="article-name">Массовые беспорядки</span>
+                    </div>
+                    <div class="article-desc">Организация массовых беспорядков с насилием.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="stars">★★★ (5 лет)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 61 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 61</span>
+                        <span class="article-name">Хулиганство</span>
+                    </div>
+                    <div class="article-desc">Грубое нарушение общественного порядка.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 20 000 руб.</span> или <span class="stars">★★ (3 года)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 62 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 62</span>
+                        <span class="article-name">Проникновение на закрытый объект</span>
+                    </div>
+                    <div class="article-desc">Незаконное проникновение на объект, закрытый для доступа.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part">ч.1: <span class="fine">штраф 40 000 руб.</span> или <span class="stars">★★★ (4 года)</span></div>
+                        <div class="penalty-part">ч.2 (с преступлениями): <span class="stars">★★★ (5 лет)</span></div>
+                        <div class="penalty-part">ч.3 (военный): <span class="fine">штраф 80 000 руб.</span> или <span class="stars">★★★ (5 лет)</span></div>
+                        <div class="penalty-part">ч.4 (госслужащим): <span class="fine">штраф 600 000 руб.</span> или <span class="stars">★★★ (4 года)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 63 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 63</span>
+                        <span class="article-name">Незаконный оборот оружия</span>
+                    </div>
+                    <div class="article-desc">Приобретение, хранение, сбыт оружия, запрещённых СИЗ.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part">ч.1,2: <span class="stars">★★★ (4 года)</span></div>
+                        <div class="penalty-part">ч.3 (открытое ношение): <span class="stars">★★★ (5 лет)</span></div>
+                        <div class="penalty-part">ч.4 (с причинением вреда): <span class="stars">★★★★ (6 лет)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 64 (наркотики без сбыта) -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 64</span>
+                        <span class="article-name">Наркотики (без сбыта)</span>
+                    </div>
+                    <div class="article-desc">Приобретение, хранение наркотиков без цели сбыта.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="stars">★★★ (5 лет)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 64.1 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 64.1</span>
+                        <span class="article-name">Сбыт наркотиков</span>
+                    </div>
+                    <div class="article-desc">Производство, сбыт или пересылка наркотиков.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="stars">★★★★ (6 лет)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 65 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 65</span>
+                        <span class="article-name">Организация проституции</span>
+                    </div>
+                    <div class="article-desc">Организация или вовлечение в занятие проституцией.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="stars">★★ (4 года)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 66 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 66</span>
+                        <span class="article-name">Жестокое обращение с животными</span>
+                    </div>
+                    <div class="article-desc">Жестокое обращение, повлёкшее гибель или увечье.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="stars">★★ (4 года)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 67 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 67</span>
+                        <span class="article-name">Неуплата штрафа</span>
+                    </div>
+                    <div class="article-desc">Неуплата назначенного штрафа.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part">до 30 тыс.: <span class="stars">★★★ (3 года)</span></div>
+                        <div class="penalty-part">30-50 тыс.: <span class="stars">★★★ (5 лет)</span></div>
+                        <div class="penalty-part">более 50 тыс.: <span class="stars">★★★★ (6 лет)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 68 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 68</span>
+                        <span class="article-name">Нарушение ПДД с тяжким вредом</span>
+                    </div>
+                    <div class="article-desc">Нарушение ПДД, повлекшее тяжкий вред здоровью или смерть.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part">ч.1 (вред): <span class="stars">★★★ (3 года)</span></div>
+                        <div class="penalty-part">ч.2 (смерть): <span class="stars">★★★★ (4 года)</span></div>
+                        <div class="penalty-part">ч.3 (неисполнение предписаний): <span class="fine">штраф 20 000 руб.</span> или <span class="stars">★★ (2 года)</span></div>
+                        <div class="penalty-part">ч.4 (наезд): <span class="fine">штраф 30 000 руб.</span> или <span class="stars">★★ (2 года)</span></div>
+                        <div class="penalty-part">ч.5 (госслужащим): <span class="stars">★★★★ (5 лет)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 69 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 69</span>
+                        <span class="article-name">Государственная измена</span>
+                    </div>
+                    <div class="article-desc">Шпионаж, выдача гостайны.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="stars">★★★★★★ (15 лет)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 70 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 70</span>
+                        <span class="article-name">Посягательство на жизнь госдеятеля</span>
+                    </div>
+                    <div class="article-desc">Посягательство на жизнь государственного или общественного деятеля.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="stars">★★★★ (5 лет)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 71 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 71</span>
+                        <span class="article-name">Вооружённый мятеж</span>
+                    </div>
+                    <div class="article-desc">Организация вооружённого мятежа против конституционного строя.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="stars">★★★★★★ (10 лет)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 72 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 72</span>
+                        <span class="article-name">Экстремизм</span>
+                    </div>
+                    <div class="article-desc">Занятие экстремизмом, публичные призывы.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part">ч.1 (занятие): <span class="stars">★★★★★ (6 лет)</span></div>
+                        <div class="penalty-part">ч.2 (призывы): <span class="stars">★★★ (4 года)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 73 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 73</span>
+                        <span class="article-name">Призывы против безопасности государства</span>
+                    </div>
+                    <div class="article-desc">Публичные призывы к деятельности против безопасности РФ.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part">ч.1: <span class="stars">★★★★ (5 лет)</span></div>
+                        <div class="penalty-part">ч.2 (нарушение целостности): <span class="fine">штраф 50 000 руб.</span> или <span class="stars">★★★ (4 года)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 74 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 74</span>
+                        <span class="article-name">Разглашение гостайны</span>
+                    </div>
+                    <div class="article-desc">Разглашение сведений, составляющих гостайну.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="stars">★★★★ (4 года)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 75 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 75</span>
+                        <span class="article-name">Незаконное получение гостайны</span>
+                    </div>
+                    <div class="article-desc">Получение гостайны путём похищения, обмана и т.д.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="stars">★★★★ (4 года)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 76 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 76</span>
+                        <span class="article-name">Злоупотребление должностными полномочиями</span>
+                    </div>
+                    <div class="article-desc">Использование служебных полномочий вопреки интересам службы.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part">ч.1: <span class="fine">штраф 500 000 руб.</span> или <span class="stars">★★ (3 года)</span></div>
+                        <div class="penalty-part">ч.2 (руководитель): <span class="fine">штраф 1 000 000 руб.</span> или <span class="stars">★★★ (6 лет)</span></div>
+                        <div class="penalty-part">ч.3 (тяжкие последствия): <span class="stars">★★★★ (7 лет)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 77 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 77</span>
+                        <span class="article-name">Превышение должностных полномочий</span>
+                    </div>
+                    <div class="article-desc">Действия, явно выходящие за пределы полномочий.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part">ч.1: <span class="fine">штраф 600 000 руб.</span> или <span class="stars">★★ (3 года)</span></div>
+                        <div class="penalty-part">ч.2 (руководитель): <span class="fine">штраф 2 000 000 руб.</span> или <span class="stars">★★★ (6 лет)</span></div>
+                        <div class="penalty-part">ч.3 (с насилием/оружием): <span class="stars">★★★ (3-7 лет)</span></div>
+                        <div class="penalty-part">ч.4 (незаконное задержание): <span class="fine">штраф 700 000 руб.</span> или <span class="stars">★★★ (3 года)</span></div>
+                        <div class="penalty-part">ч.5 (незаконные требования): <span class="fine">штраф 800 000 руб.</span> или <span class="stars">★★★ (3 года)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 78 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 78</span>
+                        <span class="article-name">Неисполнение приказа</span>
+                    </div>
+                    <div class="article-desc">Умышленное неисполнение приказа начальника.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 500 000 руб.</span> или <span class="stars">★★★ (3 года)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 79 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 79</span>
+                        <span class="article-name">Получение/дача взятки</span>
+                    </div>
+                    <div class="article-desc">Получение должностным лицом взятки, дача взятки.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="stars">★★★★★★ (8 лет)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 80 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 80</span>
+                        <span class="article-name">Халатность</span>
+                    </div>
+                    <div class="article-desc">Ненадлежащее или неисполнение обязанностей.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part">ч.1: <span class="fine">штраф 800 000 руб.</span> или <span class="stars">★ (2 года)</span></div>
+                        <div class="penalty-part">ч.2 (неисполнение): <span class="stars">★★★ (6 лет)</span></div>
+                        <div class="penalty-part">ч.3 (нарушение норм задержания): <span class="fine">штраф 1 000 000 руб.</span> или <span class="stars">★★ (3 года)</span></div>
+                        <div class="penalty-part">ч.4 (отказ в правах задержанного): <span class="fine">штраф 1 250 000 руб.</span> или <span class="stars">★★ (3 года)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 81 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 81</span>
+                        <span class="article-name">Воспрепятствование правосудию</span>
+                    </div>
+                    <div class="article-desc">Вмешательство в деятельность суда, прокурора, следователя.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part">ч.1 (суд): <span class="stars">★★★★ (6 лет)</span></div>
+                        <div class="penalty-part">ч.2 (прокурор): <span class="stars">★★★ (3 года)</span></div>
+                        <div class="penalty-part">ч.3 (с использованием служебного положения): <span class="stars">★★★ (5 лет)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 82 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 82</span>
+                        <span class="article-name">Влияние на уголовное дело</span>
+                    </div>
+                    <div class="article-desc">Оказание давления на следователя с целью изменения результата.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="stars">★★★★ (6 лет)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 83 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 83</span>
+                        <span class="article-name">Влияние на судебное дело</span>
+                    </div>
+                    <div class="article-desc">Влияние на судью с целью изменения приговора.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="stars">★★★★ (6 лет)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 84 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 84</span>
+                        <span class="article-name">Неуважение к суду</span>
+                    </div>
+                    <div class="article-desc">Оскорбление судьи, нарушение порядка в заседании.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 250 000 руб.</span> или <span class="stars">★★ (2 года)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 85 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 85</span>
+                        <span class="article-name">Привлечение заведомо невиновного</span>
+                    </div>
+                    <div class="article-desc">Привлечение невиновного к уголовной ответственности.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="stars">★★★★ (10 лет)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 86 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 86</span>
+                        <span class="article-name">Заведомо ложный донос</span>
+                    </div>
+                    <div class="article-desc">Ложный донос о совершении преступления.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 300 000 руб.</span> или <span class="stars">★★★★ (4 года)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 87 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 87</span>
+                        <span class="article-name">Побег из-под стражи</span>
+                    </div>
+                    <div class="article-desc">Побег из места лишения свободы, из-под ареста, задержания.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="stars">★★★★★★ (8 лет)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 88 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 88</span>
+                        <span class="article-name">Неисполнение приговора суда</span>
+                    </div>
+                    <div class="article-desc">Злостное неисполнение приговора, решения суда.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="stars">★★★★ (12 лет)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 89 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 89</span>
+                        <span class="article-name">Посягательство на жизнь сотрудника правоохранительных органов</span>
+                    </div>
+                    <div class="article-desc">Посягательство на жизнь сотрудника правоохранительных органов.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="stars">★★★★ (6 лет)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 90 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 90</span>
+                        <span class="article-name">Насилие в отношении представителя власти</span>
+                    </div>
+                    <div class="article-desc">Применение насилия или угроза насилием в отношении представителя власти.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part">ч.1 (не опасное): <span class="stars">★★★ (4 года)</span></div>
+                        <div class="penalty-part">ч.2 (опасное): <span class="stars">★★★★ (6 лет)</span></div>
+                        <div class="penalty-part">ч.3 (угроза): <span class="stars">★★ (2 года)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 91 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 91</span>
+                        <span class="article-name">Оскорбление представителя власти</span>
+                    </div>
+                    <div class="article-desc">Публичное оскорбление представителя власти при исполнении.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 50 000 руб.</span> или <span class="stars">★★ (3 года)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 92 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 92</span>
+                        <span class="article-name">Подделка документов</span>
+                    </div>
+                    <div class="article-desc">Подделка документов, государственных наград, штампов.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part">ч.1 (с поддельной фото): <span class="fine">штраф 250 000 – 500 000 руб.</span></div>
+                        <div class="penalty-part">ч.2: <span class="stars">★★★★ (6 лет)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 93 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 93</span>
+                        <span class="article-name">Помеха деятельности сотрудника госвласти</span>
+                    </div>
+                    <div class="article-desc">Намеренные попытки отвлечь после предупреждения.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 25 000 руб.</span> или <span class="stars">★★ (3 года)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 94 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 94</span>
+                        <span class="article-name">Присвоение полномочий должностного лица</span>
+                    </div>
+                    <div class="article-desc">Присвоение полномочий и совершение действий, нарушающих права.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 350 000 руб.</span> или <span class="stars">★★★ (6 лет)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 95 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 95</span>
+                        <span class="article-name">Надругательство над гербом/флагом</span>
+                    </div>
+                    <div class="article-desc">Надругательство над Государственным гербом или флагом РФ.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 100 000 руб.</span> или <span class="stars">★ (2 года)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 96 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 96</span>
+                        <span class="article-name">Уничтожение объектов культурного наследия</span>
+                    </div>
+                    <div class="article-desc">Уничтожение или повреждение памятников истории и культуры.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part">ч.1: <span class="fine">штраф 150 000 руб.</span> или <span class="stars">★★ (2 года)</span></div>
+                        <div class="penalty-part">ч.2 (группой): <span class="fine">штраф 300 000 руб.</span> или <span class="stars">★★★ (6 лет)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 97 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 97</span>
+                        <span class="article-name">Надругательство над воинскими захоронениями</span>
+                    </div>
+                    <div class="article-desc">Уничтожение или повреждение памятников, посвящённых защитникам Отечества.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part">ч.1: <span class="fine">штраф 250 000 руб.</span> или <span class="stars">★★★★ (4 года)</span></div>
+                        <div class="penalty-part">ч.2 (группой, с насилием): <span class="fine">штраф 500 000 руб.</span> или <span class="stars">★★★★ (7 лет)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 98 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 98</span>
+                        <span class="article-name">Надругательство над телами умерших</span>
+                    </div>
+                    <div class="article-desc">Надругательство над телами умерших или местами захоронения.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part">ч.1: <span class="fine">штраф 50 000 руб.</span> или <span class="stars">★ (1 год)</span></div>
+                        <div class="penalty-part">ч.2 (группой, по мотивам ненависти): <span class="fine">штраф 100 000 руб.</span> или <span class="stars">★★ (3 года)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 99 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 99</span>
+                        <span class="article-name">Подкуп избирателей</span>
+                    </div>
+                    <div class="article-desc">Подкуп избирателей, участников референдума.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part">ч.1: <span class="stars">★★★★ (6 лет)</span></div>
+                        <div class="penalty-part">ч.2 (группой, с использованием служебного положения): <span class="stars">★★★★ (8 лет)</span></div>
+                    </div>
+                </div>
+
+                <!-- конец УК -->
+            </div>
+
+            <!-- ПРАВАЯ КОЛОНКА - КОАП РФ -->
+            <div class="column">
+                <h2>📋 КОДЕКС ОБ АДМИНИСТРАТИВНЫХ ПРАВОНАРУШЕНИЯХ</h2>
+
+                <!-- Статья 4.7 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 4.7</span>
+                        <span class="article-name">Ответственность госслужащего</span>
+                    </div>
+                    <div class="article-desc">Совершение правонарушения по гл. IX (ПДД) госслужащим – штраф в двойном размере.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">удвоение суммы штрафа</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 5.1 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 5.1</span>
+                        <span class="article-name">Нарушение порядка рассмотрения обращений</span>
+                    </div>
+                    <div class="article-desc">Нарушение порядка рассмотрения обращений граждан.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 20 000 – 50 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 5.2 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 5.2</span>
+                        <span class="article-name">Оскорбление</span>
+                    </div>
+                    <div class="article-desc">Оскорбление, унижение чести и достоинства.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 10 000 – 20 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 5.3 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 5.3</span>
+                        <span class="article-name">Дискриминация</span>
+                    </div>
+                    <div class="article-desc">Нарушение прав по признакам пола, расы, национальности.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 5 000 – 15 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 5.5 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 5.5</span>
+                        <span class="article-name">Нарушение тайны голосования</span>
+                    </div>
+                    <div class="article-desc">Разглашение сведений о голосовании.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="stars">арест ★★ (14 суток)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 5.6 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 5.6</span>
+                        <span class="article-name">Агитация в день голосования</span>
+                    </div>
+                    <div class="article-desc">Агитация в день выборов или референдума.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="stars">арест ★★ (14 суток)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 6.1 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 6.1</span>
+                        <span class="article-name">Воспрепятствование медпомощи</span>
+                    </div>
+                    <div class="article-desc">Воспрепятствование законной деятельности медработника.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 10 000 – 15 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 6.2 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 6.2</span>
+                        <span class="article-name">Нарушение территориального принципа</span>
+                    </div>
+                    <div class="article-desc">Неоднократное нарушение территориального принципа медорганизацией.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф на организацию 50 000 – 90 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 6.3 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 6.3</span>
+                        <span class="article-name">Неоказание медпомощи</span>
+                    </div>
+                    <div class="article-desc">Неоказание помощи больному без уважительных причин.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 10 000 – 15 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 6.4 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 6.4</span>
+                        <span class="article-name">Отсутствие медкнижки</span>
+                    </div>
+                    <div class="article-desc">У сотрудника госорганизации отсутствует действующая медкнижка.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 15 000 – 25 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 6.5 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 6.5</span>
+                        <span class="article-name">Непрохождение медпроверки организацией</span>
+                    </div>
+                    <div class="article-desc">Отказ от прохождения медицинской проверки организацией.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф на организацию 50 000 – 90 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 6.6 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 6.6</span>
+                        <span class="article-name">Уклонение от оплаты медуслуг</span>
+                    </div>
+                    <div class="article-desc">Невыполнение обязательства по оплате медуслуги.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 20 000 руб.</span> или <span class="stars">арест ★★ (14 суток)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 7.1 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 7.1</span>
+                        <span class="article-name">Проникновение на частную территорию</span>
+                    </div>
+                    <div class="article-desc">Проникновение без разрешения собственника.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 10 000 – 20 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 7.2 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 7.2</span>
+                        <span class="article-name">Взлом</span>
+                    </div>
+                    <div class="article-desc">Взлом или попытка взлома с целью проникновения.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="stars">арест ★★ (14 суток)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 7.3 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 7.3</span>
+                        <span class="article-name">Попытка угона ТС</span>
+                    </div>
+                    <div class="article-desc">Попытка взлома ТС без заведения двигателя.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 10 000 – 20 000 руб.</span> или <span class="stars">арест ★★ (14 суток)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 7.4 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 7.4</span>
+                        <span class="article-name">Браконьерство</span>
+                    </div>
+                    <div class="article-desc">Добыча водных биоресурсов без лицензии.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 20 000 – 30 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 7.5 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 7.5</span>
+                        <span class="article-name">Нарушение правил рыболовства</span>
+                    </div>
+                    <div class="article-desc">Превышение нормы вылова, нарушение правил.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 15 000 – 30 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 8.1 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 8.1</span>
+                        <span class="article-name">Мелкое хулиганство</span>
+                    </div>
+                    <div class="article-desc">Нарушение общественного порядка, нецензурная брань, приставание.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 10 000 – 30 000 руб.</span> или <span class="stars">арест ★ (7 суток)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 8.2 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 8.2</span>
+                        <span class="article-name">Побои</span>
+                    </div>
+                    <div class="article-desc">Нанесение побоев, причинивших физическую боль.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 20 000 – 30 000 руб.</span> или <span class="stars">арест ★ (7 суток)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 8.3 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 8.3</span>
+                        <span class="article-name">Распитие алкоголя</span>
+                    </div>
+                    <div class="article-desc">Потребление алкоголя или появление в пьяном виде в общественном месте.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 5 000 – 15 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 8.4 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 8.4</span>
+                        <span class="article-name">Попрошайничество</span>
+                    </div>
+                    <div class="article-desc">Занятие попрошайничеством в общественных местах.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 5 000 – 15 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 8.5 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 8.5</span>
+                        <span class="article-name">Заведомо ложный вызов</span>
+                    </div>
+                    <div class="article-desc">Ложный вызов полиции, скорой, спецслужб.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 10 000 – 20 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 8.6 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 8.6</span>
+                        <span class="article-name">Несанкционированный митинг</span>
+                    </div>
+                    <div class="article-desc">Участие или призыв к несанкционированному митингу, повлёкшему нарушение порядка.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 20 000 – 30 000 руб.</span> или <span class="stars">арест ★★ (14 суток)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 8.7 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 8.7</span>
+                        <span class="article-name">Неповиновение законному распоряжению</span>
+                    </div>
+                    <div class="article-desc">Неповиновение сотруднику правоохранительных органов или военнослужащему.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 15 000 – 30 000 руб.</span> или <span class="stars">арест ★★ (14 суток)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 8.8 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 8.8</span>
+                        <span class="article-name">Клевета</span>
+                    </div>
+                    <div class="article-desc">Распространение заведомо ложных сведений, порочащих честь.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 10 000 – 20 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 8.9 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 8.9</span>
+                        <span class="article-name">Невыполнение требований прокурора</span>
+                    </div>
+                    <div class="article-desc">Невыполнение законных требований прокурора, следователя, дознавателя.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 10 000 – 20 000 руб.</span></div>
+                        <div class="penalty-part">для госслужащих: <span class="fine">10 окладов</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 8.10 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 8.10</span>
+                        <span class="article-name">Нарушение исполнительного производства</span>
+                    </div>
+                    <div class="article-desc">Невыполнение требований судьи, представление недостоверных сведений.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 10 000 – 20 000 руб.</span></div>
+                        <div class="penalty-part">для госслужащих: <span class="fine">10 окладов</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 8.11 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 8.11</span>
+                        <span class="article-name">Нарушение правил на охраняемых территориях</span>
+                    </div>
+                    <div class="article-desc">Нарушение правил поведения на закрытых объектах.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 10 000 – 20 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 8.12 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 8.12</span>
+                        <span class="article-name">Ношение масок</span>
+                    </div>
+                    <div class="article-desc">Ношение масок в общественных местах (кроме медицинских).</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 10 000 – 15 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 8.13 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 8.13</span>
+                        <span class="article-name">Открытое ношение холодного оружия</span>
+                    </div>
+                    <div class="article-desc">Ношение холодного оружия в общественных местах.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 15 000 – 20 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 8.14 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 8.14</span>
+                        <span class="article-name">Курение в общественном месте</span>
+                    </div>
+                    <div class="article-desc">Курение табака, использование кальянов в общественных местах.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 5 000 – 10 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 8.15 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 8.15</span>
+                        <span class="article-name">Нарушение режима ЧП, КТО, комендантского часа</span>
+                    </div>
+                    <div class="article-desc">Нарушение требований особых режимов.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 10 000 – 30 000 руб.</span> или <span class="stars">арест ★ (7 суток)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 9.1 (ПДД) -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 9.1</span>
+                        <span class="article-name">Управление без документов</span>
+                    </div>
+                    <div class="article-desc">Отсутствие документов, предусмотренных ПДД, или водительского удостоверения.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 30 000 руб.</span> (ч.1 и ч.2)</div>
+                    </div>
+                </div>
+
+                <!-- Статья 9.2 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 9.2</span>
+                        <span class="article-name">Непредоставление документов ГИБДД</span>
+                    </div>
+                    <div class="article-desc">Отказ предоставить документы сотруднику ГИБДД.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 15 000 руб.</span> или <span class="fine">лишение прав</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 9.3 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 9.3</span>
+                        <span class="article-name">Управление незарегистрированным ТС</span>
+                    </div>
+                    <div class="article-desc">ТС не зарегистрировано, без номеров или с изменёнными знаками.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 30 000 руб.</span> или <span class="fine">лишение прав</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 9.4 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 9.4</span>
+                        <span class="article-name">Тонировка</span>
+                    </div>
+                    <div class="article-desc">Тонировка более 75% на передних стёклах.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 15 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 9.5 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 9.5</span>
+                        <span class="article-name">Техническая неисправность</span>
+                    </div>
+                    <div class="article-desc">Управление при наличии неисправности.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 30 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 9.6 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 9.6</span>
+                        <span class="article-name">Нарушение ПДД пешеходами</span>
+                    </div>
+                    <div class="article-desc">Нарушение правил пешеходами, велосипедистами.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 35 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 9.7 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 9.7</span>
+                        <span class="article-name">Посадка/высадка со стороны проезжей части</span>
+                    </div>
+                    <div class="article-desc">Нарушение правил посадки/высадки.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 10 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 9.8 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 9.8</span>
+                        <span class="article-name">Игнорирование требования об остановке</span>
+                    </div>
+                    <div class="article-desc">Невыполнение требования остановиться.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 30 000 руб.</span> или <span class="stars">арест ★★ (14 суток)</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 9.9 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 9.9</span>
+                        <span class="article-name">Несоблюдение требований знаков/разметки</span>
+                    </div>
+                    <div class="article-desc">Игнорирование дорожных знаков или разметки.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 25 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 9.10 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 9.10</span>
+                        <span class="article-name">Использование приоритета без безопасности</span>
+                    </div>
+                    <div class="article-desc">Приоритет с включёнными маячками без убеждения в безопасности.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 25 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 9.11 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 9.11</span>
+                        <span class="article-name">Нарушение правил аварийных сигналов</span>
+                    </div>
+                    <div class="article-desc">Неправильное использование аварийной сигнализации.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 10 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 9.12 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 9.12</span>
+                        <span class="article-name">Выключенные фары</span>
+                    </div>
+                    <div class="article-desc">Управление с выключенными фарами.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 10 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 9.13 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 9.13</span>
+                        <span class="article-name">Использование звукового сигнала</span>
+                    </div>
+                    <div class="article-desc">Применение звукового сигнала в нарушение ПДД.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 5 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 9.14 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 9.14</span>
+                        <span class="article-name">Проезд на красный сигнал</span>
+                    </div>
+                    <div class="article-desc">Проезд на запрещающий сигнал светофора или регулировщика.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 25 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 9.15 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 9.15</span>
+                        <span class="article-name">Неостановка перед стоп-линией</span>
+                    </div>
+                    <div class="article-desc">Невыполнение требования остановиться перед стоп-линией.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 35 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 9.16 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 9.16</span>
+                        <span class="article-name">Неиспользование поворотников</span>
+                    </div>
+                    <div class="article-desc">Начало движения, поворот без сигнала поворота.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 10 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 9.17 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 9.17</span>
+                        <span class="article-name">Непредоставление преимущества при перестроении</span>
+                    </div>
+                    <div class="article-desc">Не уступил дорогу при перестроении.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 30 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 9.18 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 9.18</span>
+                        <span class="article-name">Поворот не из своей полосы</span>
+                    </div>
+                    <div class="article-desc">Поворот из полосы, не предназначенной для этого.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 15 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 9.19 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 9.19</span>
+                        <span class="article-name">Поворот в нарушение правил</span>
+                    </div>
+                    <div class="article-desc">Поворот, разворот с нарушением требований знаков или разметки.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 15 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 9.20 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 9.20</span>
+                        <span class="article-name">Движение по встречной полосе</span>
+                    </div>
+                    <div class="article-desc">Выезд на полосу встречного движения в нарушение.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 30 000 руб.</span> или <span class="fine">лишение прав</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 9.21 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 9.21</span>
+                        <span class="article-name">Повреждение дорог</span>
+                    </div>
+                    <div class="article-desc">Повреждение дорог, дорожных сооружений, создающее угрозу.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 5 000 – 20 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 9.22 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 9.22</span>
+                        <span class="article-name">Выезд на встречную полосу</span>
+                    </div>
+                    <div class="article-desc">Выезд на встречную полосу.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 20 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 9.23 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 9.23</span>
+                        <span class="article-name">Движение по левым полосам при свободных правых</span>
+                    </div>
+                    <div class="article-desc">Вне населённых пунктов занятие левой полосы при свободных правых.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 5 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 9.24 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 9.24</span>
+                        <span class="article-name">Движение по прерывистым линиям</span>
+                    </div>
+                    <div class="article-desc">Движение по прерывистым линиям разметки.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 5 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 9.25 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 9.25</span>
+                        <span class="article-name">Движение по обочинам и тротуарам</span>
+                    </div>
+                    <div class="article-desc">Движение по разделительным полосам, обочинам, тротуарам.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 5 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 9.26 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 9.26</span>
+                        <span class="article-name">Несоблюдение дистанции</span>
+                    </div>
+                    <div class="article-desc">Несоблюдение дистанции или бокового интервала.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 5 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 9.27 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 9.27</span>
+                        <span class="article-name">Обгон автомобиля с маячками</span>
+                    </div>
+                    <div class="article-desc">Обгон ТС с включёнными проблесковыми маячками и звуком.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 40 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 9.28 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 9.28</span>
+                        <span class="article-name">Обгон в запрещённых местах</span>
+                    </div>
+                    <div class="article-desc">Обгон там, где это запрещено.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 10 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 9.29 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 9.29</span>
+                        <span class="article-name">Препятствование обгону</span>
+                    </div>
+                    <div class="article-desc">Создание помех при обгоне.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 10 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 9.30 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 9.30</span>
+                        <span class="article-name">Остановка на пешеходном переходе</span>
+                    </div>
+                    <div class="article-desc">Остановка или стоянка на пешеходном переходе и ближе 5 м.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 15 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 9.31 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 9.31</span>
+                        <span class="article-name">Остановка в местах остановки маршрутных ТС</span>
+                    </div>
+                    <div class="article-desc">Остановка на остановках общественного транспорта.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 10 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 9.32 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 9.32</span>
+                        <span class="article-name">Остановка, создавшая препятствия</span>
+                    </div>
+                    <div class="article-desc">Нарушение правил остановки, повлёкшее создание препятствий.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 30 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 9.33 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 9.33</span>
+                        <span class="article-name">Иные нарушения остановки</span>
+                    </div>
+                    <div class="article-desc">Прочие нарушения правил остановки/стоянки.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 10 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 9.34 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 9.34</span>
+                        <span class="article-name">Нарушения проезда перекрёстков без опасности</span>
+                    </div>
+                    <div class="article-desc">Нарушение правил проезда перекрёстков, не создавшее опасности.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 10 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 9.35 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 9.35</span>
+                        <span class="article-name">Нарушения проезда перекрёстков с опасностью</span>
+                    </div>
+                    <div class="article-desc">Нарушение, повлёкшее опасность для других участников.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 15 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 9.36 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 9.36</span>
+                        <span class="article-name">Нарушения на автомагистрали</span>
+                    </div>
+                    <div class="article-desc">Движение по автомагистрали со скоростью менее 40 км/ч, задним ходом и т.п.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 10 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 9.37 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 9.37</span>
+                        <span class="article-name">Непредоставление преимущества спецтранспорту</span>
+                    </div>
+                    <div class="article-desc">Не уступил дорогу ТС с проблесковыми маячками.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 20 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 9.38 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 9.38</span>
+                        <span class="article-name">Непредоставление преимущества троллейбусам/автобусам</span>
+                    </div>
+                    <div class="article-desc">Не уступил дорогу троллейбусу или автобусу, начинающим движение от остановки.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 10 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 9.39 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 9.39</span>
+                        <span class="article-name">Непредоставление преимущества на главной дороге</span>
+                    </div>
+                    <div class="article-desc">Не уступил дорогу ТС, движущемуся по главной.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 5 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 9.40 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 9.40</span>
+                        <span class="article-name">Непредоставление преимущества пешеходам</span>
+                    </div>
+                    <div class="article-desc">Не уступил дорогу пешеходам или велосипедистам.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 5 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 9.41 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 9.41</span>
+                        <span class="article-name">Оставление места ДТП</span>
+                    </div>
+                    <div class="article-desc">Оставление водителем места ДТП.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 15 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 9.42 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 9.42</span>
+                        <span class="article-name">Управление в состоянии опьянения</span>
+                    </div>
+                    <div class="article-desc">Управление ТС в состоянии опьянения или передача управления пьяному.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 30 000 руб.</span> или <span class="fine">лишение прав</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 9.43 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 9.43</span>
+                        <span class="article-name">Отказ от медосвидетельствования</span>
+                    </div>
+                    <div class="article-desc">Невыполнение требования о прохождении медосвидетельствования на состояние опьянения.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 30 000 руб.</span> или <span class="fine">лишение прав</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 9.44 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 9.44</span>
+                        <span class="article-name">Опасное вождение</span>
+                    </div>
+                    <div class="article-desc">Неоднократное совершение действий, создающих угрозу.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 40 000 руб.</span> или <span class="fine">лишение прав</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 9.45 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 9.45</span>
+                        <span class="article-name">Превышение скорости</span>
+                    </div>
+                    <div class="article-desc">Превышение установленной скорости.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part">до 20 км/ч: <span class="fine">5 000 руб.</span></div>
+                        <div class="penalty-part">20-40 км/ч: <span class="fine">10 000 руб.</span></div>
+                        <div class="penalty-part">40-80 км/ч: <span class="fine">15 000 руб.</span></div>
+                        <div class="penalty-part">более 80 км/ч: <span class="fine">25 000 руб.</span> или <span class="fine">лишение прав</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 10.1 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 10.1</span>
+                        <span class="article-name">Неисполнение требований о внешнем виде</span>
+                    </div>
+                    <div class="article-desc">Нарушение требований к внешнему виду сотрудников госорганизаций.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 50 000 – 60 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 10.2 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 10.2</span>
+                        <span class="article-name">Неисполнение требований этики</span>
+                    </div>
+                    <div class="article-desc">Нарушение этики работников госорганизаций.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 25 000 – 50 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 10.3 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 10.3</span>
+                        <span class="article-name">Взлёт/посадка без уведомления</span>
+                    </div>
+                    <div class="article-desc">Взлёт или посадка воздушного судна без уведомления.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 50 000 – 100 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 10.4 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 10.4</span>
+                        <span class="article-name">Нарушение правил пользования воздушным пространством</span>
+                    </div>
+                    <div class="article-desc">Иные нарушения правил использования воздушного пространства.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 50 000 – 100 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 11.1 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 11.1</span>
+                        <span class="article-name">Нарушение оформления реквизитов</span>
+                    </div>
+                    <div class="article-desc">Нарушение правил оформления реквизитов документов.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 20 000 – 50 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 11.2 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 11.2</span>
+                        <span class="article-name">Нарушение общих требований к созданию документов</span>
+                    </div>
+                    <div class="article-desc">Нарушение общих правил создания документов.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 50 000 – 75 000 руб.</span></div>
+                    </div>
+                </div>
+
+                <!-- Статья 11.3 -->
+                <div class="article-item">
+                    <div class="article-header">
+                        <span class="article-num">ст. 11.3</span>
+                        <span class="article-name">Нарушение специальных требований к созданию документов</span>
+                    </div>
+                    <div class="article-desc">Нарушение специальных правил документооборота.</div>
+                    <div class="article-penalty">
+                        <div class="penalty-part"><span class="fine">штраф 20 000 – 35 000 руб.</span></div>
+                    </div>
+                </div>
+
+            </div> <!-- конец правой колонки -->
+        </div> <!-- конец two-columns -->
+
+        <!-- Нижний разделитель -->
+        <div class="main__divider" style="margin-top: 50px;"></div>
+        <div class="authorship">
+            <span>⸻</span> ПОЛНАЯ ПАМЯТКА ДЛЯ ГОСУДАРСТВЕННЫХ СЛУЖАЩИХ RMRP · РУБЛЁВКА <span>⸻</span>
+        </div>
+    </div>
+</body>
+</html>
