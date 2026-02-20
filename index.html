@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Памятка · госслужащий RMRP</title>
+    <style>
+        /* Полный сброс отступов */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Чёрно-бело-серая строгость */
+        body {
+            background-color: #ffffff;
+            color: #000000;
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            line-height: 1.4;
+            padding: 20px;
+        }
+
+        /* Центровщик с ограничением ширины */
+        .main {
+            max-width: 1200px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Главный текст — крупно, жирно, строго */
+        .main__title {
+            font-size: clamp(3.5rem, 15vw, 8rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #808080;  /* серая полоса */
+            display: inline-block;
+            padding-bottom: 0.3rem;
+            padding-left: 0.2rem;
+            padding-right: 0.2rem;
+        }
+
+        /* Дополнительная информация — официальный полутон */
+        .main__sub {
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: #4f4f4f;          /* тёмно-серый */
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            margin-top: 1rem;
+            word-break: break-word;
+        }
+
+        /* Разделитель — тонкая линия */
+        .main__divider {
+            width: 150px;
+            height: 1px;
+            background-color: #a0a0a0;
+            margin: 2.5rem auto 1.8rem;
+        }
+
+        /* Нижняя строка — почти незаметно, но строго */
+        .main__footer {
+            font-size: 0.85rem;
+            color: #a0a0a0;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            border-top: 1px solid #d4d4d4;
+            padding-top: 1.8rem;
+            display: inline-block;
+        }
+
+        /* Акцент на аббревиатуре RMRP — можно сделать чуть жирнее */
+        .rmrp {
+            font-weight: 600;
+            color: #2f2f2f;
+        }
+
+        /* Для самых маленьких экранов — корректировка подвала */
+        @media (max-width: 480px) {
+            .main__title {
+                border-bottom-width: 2px;
+            }
+            .main__sub {
+                font-size: 1.2rem;
+                letter-spacing: 0.15em;
+            }
+            .main__footer {
+                font-size: 0.7rem;
+                letter-spacing: 0.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <!-- Крупный заголовок — точно как в запросе, с точкой -->
+        <h1 class="main__title">Памятка для госсника.</h1>
+
+        <!-- Уточняющая строка: ведомство и статус -->
+        <div class="main__sub">
+            <span class="rmrp">RMRP</span> · государственный служащий
+        </div>
+
+        <!-- Декоративная серая черта (чистый цвет) -->
+        <div class="main__divider"></div>
+
+        <!-- Нижний колонтитул в стиле "для служебного пользования" -->
+        <div class="main__footer">
+            официально · строго конфиденциально
+        </div>
+    </div>
+</body>
+</html>
