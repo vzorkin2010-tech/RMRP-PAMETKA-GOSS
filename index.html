@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Памятка · госслужащий RMRP</title>
+    <title>Памятка · госслужащий RMRP · фан-сайт</title>
     <style>
         /* Полный сброс отступов */
         * {
@@ -12,9 +12,17 @@
             box-sizing: border-box;
         }
 
-        /* Чёрный фон, белый текст — абсолютная строгость */
+        /* Чёрный фон с мягкими световыми пятнами */
         body {
             background-color: #000000;
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.08) 0%, transparent 60%),
+                radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.05) 0%, transparent 70%),
+                radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.05) 0%, transparent 70%),
+                radial-gradient(circle at 10% 80%, rgba(255, 255, 255, 0.04) 0%, transparent 80%),
+                radial-gradient(circle at 90% 20%, rgba(255, 255, 255, 0.04) 0%, transparent 80%),
+                radial-gradient(circle at 40% 60%, rgba(255, 255, 255, 0.03) 0%, transparent 90%),
+                radial-gradient(circle at 70% 40%, rgba(255, 255, 255, 0.03) 0%, transparent 90%);
             color: #ffffff;
             font-family: 'Arial', 'Helvetica', sans-serif;
             min-height: 100vh;
@@ -26,14 +34,15 @@
             padding: 20px;
         }
 
-        /* Центровщик с ограничением ширины */
+        /* Центровщик */
         .main {
             max-width: 1200px;
             width: 100%;
             text-align: center;
+            z-index: 2;
         }
 
-        /* Главный текст — крупно, жирно, белый */
+        /* Главный текст */
         .main__title {
             font-size: clamp(3.5rem, 15vw, 8rem);
             font-weight: 900;
@@ -41,7 +50,7 @@
             letter-spacing: -0.02em;
             line-height: 1.1;
             margin-bottom: 1.5rem;
-            border-bottom: 3px solid #aaaaaa;  /* светло-серая полоса */
+            border-bottom: 3px solid #aaaaaa;
             display: inline-block;
             padding-bottom: 0.3rem;
             padding-left: 0.2rem;
@@ -49,18 +58,18 @@
             color: #ffffff;
         }
 
-        /* Дополнительная информация — светлый серый */
+        /* Подзаголовок */
         .main__sub {
             font-size: 1.6rem;
             font-weight: 400;
-            color: #cccccc;          /* очень светлый серый */
+            color: #cccccc;
             text-transform: uppercase;
             letter-spacing: 0.3em;
             margin-top: 1rem;
             word-break: break-word;
         }
 
-        /* Разделитель — тёмно-серая линия */
+        /* Разделитель */
         .main__divider {
             width: 150px;
             height: 1px;
@@ -68,24 +77,101 @@
             margin: 2.5rem auto 1.8rem;
         }
 
-        /* Нижняя строка — едва заметный серый */
-        .main__footer {
-            font-size: 0.85rem;
-            color: #777777;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            border-top: 1px solid #333333;
-            padding-top: 1.8rem;
-            display: inline-block;
-        }
-
-        /* Акцент на аббревиатуре RMRP — чистый белый */
         .rmrp {
             font-weight: 600;
             color: #ffffff;
         }
 
-        /* Для самых маленьких экранов — корректировка подвала */
+        /* Дисклеймер */
+        .fan-disclaimer {
+            font-size: 0.85rem;
+            color: #666666;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            border-top: 1px solid #333333;
+            padding-top: 1.8rem;
+            margin-top: 1rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .fan-disclaimer span {
+            color: #888888;
+        }
+
+        /* Строка авторства (Росгвардия, Рублёвка) */
+        .authorship {
+            font-size: 0.8rem;
+            color: #555555;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .authorship span {
+            color: #777777;
+            margin: 0 0.5rem;
+        }
+
+        /* Меню категорий */
+        .category-menu {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        /* Стиль кнопки */
+        .category-button {
+            background-color: transparent;
+            border: 2px solid #555555;
+            color: #eeeeee;
+            font-size: 1.2rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 12px 28px;
+            cursor: default;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: none;
+            min-width: 200px;
+            text-align: center;
+        }
+
+        /* Иконка (белая) */
+        .category-button .icon {
+            color: #ffffff;
+            font-size: 1.4rem;
+            line-height: 1;
+        }
+
+        .category-button:hover {
+            background-color: #333333;
+            border-color: #777777;
+            color: #ffffff;
+        }
+
+        @media (max-width: 700px) {
+            .category-menu {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            .category-button {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
         @media (max-width: 480px) {
             .main__title {
                 border-bottom-width: 2px;
@@ -94,29 +180,54 @@
                 font-size: 1.2rem;
                 letter-spacing: 0.15em;
             }
-            .main__footer {
+            .fan-disclaimer {
                 font-size: 0.7rem;
                 letter-spacing: 0.1em;
+                padding-top: 1.2rem;
+            }
+            .authorship {
+                font-size: 0.65rem;
+            }
+            .category-button {
+                font-size: 1rem;
+                padding: 10px 20px;
             }
         }
     </style>
 </head>
 <body>
     <div class="main">
-        <!-- Крупный заголовок — белый на чёрном -->
         <h1 class="main__title">Памятка для госсника.</h1>
-
-        <!-- Уточняющая строка: ведомство и статус -->
         <div class="main__sub">
             <span class="rmrp">RMRP</span> · государственный служащий
         </div>
-
-        <!-- Декоративная серая черта -->
         <div class="main__divider"></div>
+        
+        <!-- Фанатский дисклеймер -->
+        <div class="fan-disclaimer">
+            <span>⸻</span> НЕОФИЦИАЛЬНАЯ ФАНАТСКАЯ СТРАНИЦА <span>⸻</span><br>
+            Проект RMRP для GTA 5 RP · Создано поклонником · Не имеет отношения к администрации проекта
+        </div>
 
-        <!-- Нижний колонтитул в стиле "для служебного пользования" -->
-        <div class="main__footer">
-            официально · строго конфиденциально
+        <!-- Строка авторства: Росгвардия, сервер Рублёвка -->
+        <div class="authorship">
+            <span>⸻</span> СОЗДАНО РОСГВАРДИЕЙ · ПЕРВЫЙ СЕРВЕР РУБЛЁВКА <span>⸻</span>
+        </div>
+
+        <!-- Меню категорий кнопок -->
+        <div class="category-menu">
+            <!-- Кнопка КУРС МОЛОДОГО БОЙЦА с белой иконкой (звезда) -->
+            <div class="category-button">
+                <span class="icon">★</span> КУРС МОЛОДОГО БОЙЦА
+            </div>
+            <!-- Остальные кнопки -->
+            <div class="category-button">Быстрая Памятка</div>
+            <div class="category-button">Памятка налётов</div>
+            <div class="category-button">Памятка поставок</div>
+            <div class="category-button">Памятка повышения</div>
+            <div class="category-button">Памятка Порядка задержаний</div>
+            <div class="category-button">Памятка порядка ареста</div>
+            <div class="category-button">Памятка прав задерженого</div>
         </div>
     </div>
 </body>
