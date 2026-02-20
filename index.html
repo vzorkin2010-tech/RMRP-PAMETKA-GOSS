@@ -28,10 +28,28 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
             line-height: 1.4;
             padding: 20px;
+        }
+
+        /* Верхнее уведомление о конфиденциальности */
+        .privacy-notice {
+            text-align: center;
+            font-size: 0.7rem;
+            color: #777777;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            max-width: 900px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #333333;
+            padding-bottom: 12px;
+            width: 100%;
+        }
+
+        .privacy-notice span {
+            color: #555555;
+            margin: 0 6px;
         }
 
         /* Центровщик */
@@ -40,6 +58,10 @@
             width: 100%;
             text-align: center;
             z-index: 2;
+            flex: 1 0 auto; /* чтобы прижать футер, но у нас нет футера */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         /* Главный текст */
@@ -82,7 +104,7 @@
             color: #ffffff;
         }
 
-        /* Дисклеймер */
+        /* Дисклеймер (фанатский) */
         .fan-disclaimer {
             font-size: 0.85rem;
             color: #666666;
@@ -173,6 +195,12 @@
         }
 
         @media (max-width: 480px) {
+            .privacy-notice {
+                font-size: 0.6rem;
+                letter-spacing: 0.1em;
+                padding-bottom: 8px;
+                margin-bottom: 15px;
+            }
             .main__title {
                 border-bottom-width: 2px;
             }
@@ -196,6 +224,12 @@
     </style>
 </head>
 <body>
+    <!-- Уведомление о конфиденциальности (самый верх) -->
+    <div class="privacy-notice">
+        <span>⸻</span> САЙТ НЕ СОБИРАЕТ И НЕ ОБРАБАТЫВАЕТ ПЕРСОНАЛЬНЫЕ ДАННЫЕ, IP-АДРЕСА И ПРОЧУЮ ТЕХНИЧЕСКУЮ ИНФОРМАЦИЮ <span>⸻</span><br>
+        РЕСУРС НОСИТ ИСКЛЮЧИТЕЛЬНО ВИЗУАЛЬНО-ИНФОРМАЦИОННЫЙ ХАРАКТЕР ДЛЯ ГОСУДАРСТВЕННЫХ СЛУЖАЩИХ ПРОЕКТА RMRP
+    </div>
+
     <div class="main">
         <h1 class="main__title">Памятка для госсника.</h1>
         <div class="main__sub">
