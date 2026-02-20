@@ -24,7 +24,7 @@
                 radial-gradient(circle at 70% 40%, rgba(255, 255, 255, 0.03) 0%, transparent 90%);
             color: #ffffff;
             font-family: 'Arial', 'Helvetica', sans-serif;
-            line-height: 1.3;
+            line-height: 1.4;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -33,7 +33,7 @@
         }
 
         .main {
-            max-width: 1600px; /* увеличено для более широких колонок */
+            max-width: 1600px;
             width: 100%;
             z-index: 2;
         }
@@ -69,83 +69,107 @@
         .column {
             background-color: rgba(10, 10, 10, 0.5);
             border: 1px solid #333333;
-            padding: 20px;
-            /* Убрана максимальная высота и прокрутка — колонки занимают всю высоту контента */
+            padding: 15px;
+            max-height: 800px;
+            overflow-y: auto;
         }
 
         .column h2 {
-            font-size: 1.8rem;
-            font-weight: normal; /* не жирный */
+            font-size: 1.6rem;
+            font-weight: normal;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             border-left: 4px solid #777777;
-            padding-left: 15px;
+            padding-left: 10px;
             color: #dddddd;
-            /* Иконки удалены */
+            position: sticky;
+            top: 0;
+            background-color: #0a0a0a;
+            z-index: 5;
+            padding-top: 5px;
+            padding-bottom: 5px;
         }
 
-        .article-item {
+        /* Табличное представление статей */
+        .article-table {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .article-row {
+            display: grid;
+            grid-template-columns: minmax(75px, auto) 1fr minmax(150px, auto);
+            gap: 8px;
+            align-items: baseline;
+            padding: 5px 0;
             border-bottom: 1px dashed #444444;
-            padding: 6px 0;
         }
 
-        .article-item:last-child {
+        .article-row:last-child {
             border-bottom: none;
         }
 
-        .article-header {
-            display: flex;
-            align-items: baseline;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin-bottom: 2px;
-        }
-
         .article-num {
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 700;
             color: #cccccc;
             font-family: 'Courier New', monospace;
             background-color: #1e1e1e;
             padding: 2px 6px;
             border-radius: 4px;
+            text-align: center;
             white-space: nowrap;
         }
 
         .article-name {
             font-size: 0.95rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.02em;
+            font-weight: 400;
             color: #ffffff;
+            text-transform: none;
+            letter-spacing: normal;
         }
 
         .article-penalty {
-            font-size: 0.85rem;
-            background-color: #1e1e1e;
-            padding: 4px 8px;
-            border-left: 3px solid #555555;
-            margin-top: 3px;
-        }
-
-        .penalty-part {
-            margin: 2px 0;
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-align: right;
+            white-space: nowrap;
         }
 
         .stars {
-            color: #ff4d4d;
+            color: #ff4d4d; /* красный */
             font-weight: 700;
         }
 
         .fine {
-            color: #ffd966;
+            color: #ffd966; /* жёлтый */
             font-weight: 700;
         }
 
+        /* Адаптация */
         @media (max-width: 900px) {
             .two-columns {
                 grid-template-columns: 1fr;
+            }
+            .column {
+                max-height: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .article-row {
+                grid-template-columns: 1fr;
+                gap: 2px;
+                border-bottom: 1px dashed #444444;
+                padding: 8px 0;
+            }
+            .article-num, .article-name, .article-penalty {
+                text-align: left;
+            }
+            .article-penalty {
+                white-space: normal;
             }
         }
 
@@ -166,1239 +190,860 @@
             <!-- ЛЕВАЯ КОЛОНКА - УГОЛОВНЫЙ КОДЕКС РФ -->
             <div class="column">
                 <h2>УГОЛОВНЫЙ КОДЕКС РФ</h2>
-
-                <!-- 37.1 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 37.1</span>
-                        <span class="article-name">Убийство (ч.1)</span>
+                <div class="article-table">
+                    <!-- 37.1 -->
+                    <div class="article-row">
+                        <span class="article-num">37.1</span>
+                        <span class="article-name">Убийство</span>
+                        <span class="article-penalty"><span class="stars">★★★★ (7 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★★ (7 лет)</span></div>
-                </div>
-                <!-- 37.2 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 37.2</span>
-                        <span class="article-name">Убийство (ч.2)</span>
+                    <!-- 37.2 -->
+                    <div class="article-row">
+                        <span class="article-num">37.2</span>
+                        <span class="article-name">Убийство (два и более лиц)</span>
+                        <span class="article-penalty"><span class="stars">★★★★ (8 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★★ (8 лет)</span></div>
-                </div>
-
-                <!-- 38.1 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 38.1</span>
-                        <span class="article-name">Тяжкий вред здоровью (ч.1)</span>
+                    <!-- 38.1 -->
+                    <div class="article-row">
+                        <span class="article-num">38.1</span>
+                        <span class="article-name">Тяжкий вред здоровью</span>
+                        <span class="article-penalty"><span class="stars">★★★ (5 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★ (5 лет)</span></div>
-                </div>
-                <!-- 38.2 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 38.2</span>
-                        <span class="article-name">Тяжкий вред здоровью (ч.2)</span>
+                    <!-- 38.2 -->
+                    <div class="article-row">
+                        <span class="article-num">38.2</span>
+                        <span class="article-name">Тяжкий вред (квалиф.)</span>
+                        <span class="article-penalty"><span class="stars">★★★★ (7 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★★ (7 лет)</span></div>
-                </div>
-
-                <!-- 39 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 39</span>
+                    <!-- 39 -->
+                    <div class="article-row">
+                        <span class="article-num">39</span>
                         <span class="article-name">Угроза убийством</span>
+                        <span class="article-penalty"><span class="stars">★★★ (4 года)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★ (4 года)</span></div>
-                </div>
-
-                <!-- 40 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 40</span>
+                    <!-- 40 -->
+                    <div class="article-row">
+                        <span class="article-num">40</span>
                         <span class="article-name">Изнасилование</span>
+                        <span class="article-penalty"><span class="stars">★★★ (6 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★ (6 лет)</span></div>
-                </div>
-
-                <!-- 41.1 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 41.1</span>
-                        <span class="article-name">Похищение человека (ч.1)</span>
+                    <!-- 41.1 -->
+                    <div class="article-row">
+                        <span class="article-num">41.1</span>
+                        <span class="article-name">Похищение человека</span>
+                        <span class="article-penalty"><span class="stars">★★★ (6 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★ (6 лет)</span></div>
-                </div>
-                <!-- 41.2 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 41.2</span>
-                        <span class="article-name">Похищение человека (ч.2)</span>
+                    <!-- 41.2 -->
+                    <div class="article-row">
+                        <span class="article-num">41.2</span>
+                        <span class="article-name">Похищение (квалиф.)</span>
+                        <span class="article-penalty"><span class="stars">★★★★ (6 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★★ (6 лет)</span></div>
-                </div>
-
-                <!-- 42 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 42</span>
+                    <!-- 42 -->
+                    <div class="article-row">
+                        <span class="article-num">42</span>
                         <span class="article-name">Незаконное лишение свободы</span>
+                        <span class="article-penalty"><span class="stars">★★★ (4 года)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★ (4 года)</span></div>
-                </div>
-
-                <!-- 43 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 43</span>
+                    <!-- 43 -->
+                    <div class="article-row">
+                        <span class="article-num">43</span>
                         <span class="article-name">Нарушение неприкосновенности жилища</span>
+                        <span class="article-penalty"><span class="fine">штраф 20 000 руб.</span> или <span class="stars">★★ (3 года)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 20 000 руб.</span> или <span class="stars">★★ (3 года)</span></div>
-                </div>
-
-                <!-- 44 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 44</span>
+                    <!-- 44 -->
+                    <div class="article-row">
+                        <span class="article-num">44</span>
                         <span class="article-name">Кража</span>
+                        <span class="article-penalty"><span class="fine">штраф 30 000 руб.</span> или <span class="stars">★★ (3 года)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 30 000 руб.</span> или <span class="stars">★★ (3 года)</span></div>
-                </div>
-
-                <!-- 45.1 (присвоение/растрата) -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 45.1</span>
+                    <!-- 45.1 -->
+                    <div class="article-row">
+                        <span class="article-num">45.1</span>
                         <span class="article-name">Присвоение/растрата</span>
+                        <span class="article-penalty"><span class="fine">штраф 50 000 руб.</span> или <span class="stars">★★ (3 года)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 50 000 руб.</span> или <span class="stars">★★ (3 года)</span></div>
-                </div>
-                <!-- 45.2 (мошенничество) -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 45.2</span>
+                    <!-- 45.2 -->
+                    <div class="article-row">
+                        <span class="article-num">45.2</span>
                         <span class="article-name">Мошенничество</span>
+                        <span class="article-penalty"><span class="fine">штраф 50 000 руб.</span> или <span class="stars">★★★ (3 года)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 50 000 руб.</span> или <span class="stars">★★★ (3 года)</span></div>
-                </div>
-
-                <!-- 46.1 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 46.1</span>
-                        <span class="article-name">Грабеж (ч.1)</span>
+                    <!-- 46.1 -->
+                    <div class="article-row">
+                        <span class="article-num">46.1</span>
+                        <span class="article-name">Грабеж</span>
+                        <span class="article-penalty"><span class="stars">★★ (4 года)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★ (4 года)</span></div>
-                </div>
-                <!-- 46.2 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 46.2</span>
-                        <span class="article-name">Грабеж (ч.2)</span>
+                    <!-- 46.2 -->
+                    <div class="article-row">
+                        <span class="article-num">46.2</span>
+                        <span class="article-name">Грабеж (квалиф.)</span>
+                        <span class="article-penalty"><span class="stars">★★★ (5 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★ (5 лет)</span></div>
-                </div>
-
-                <!-- 47.1 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 47.1</span>
-                        <span class="article-name">Разбой (ч.1)</span>
+                    <!-- 47.1 -->
+                    <div class="article-row">
+                        <span class="article-num">47.1</span>
+                        <span class="article-name">Разбой</span>
+                        <span class="article-penalty"><span class="stars">★★★ (5 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★ (5 лет)</span></div>
-                </div>
-                <!-- 47.2 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 47.2</span>
-                        <span class="article-name">Разбой (ч.2)</span>
+                    <!-- 47.2 -->
+                    <div class="article-row">
+                        <span class="article-num">47.2</span>
+                        <span class="article-name">Разбой (группой, с оружием)</span>
+                        <span class="article-penalty"><span class="stars">★★★★ (6 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★★ (6 лет)</span></div>
-                </div>
-                <!-- 47.3 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 47.3</span>
-                        <span class="article-name">Разбой (ч.3)</span>
+                    <!-- 47.3 -->
+                    <div class="article-row">
+                        <span class="article-num">47.3</span>
+                        <span class="article-name">Разбой (тяжкий вред)</span>
+                        <span class="article-penalty"><span class="stars">★★★★ (7 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★★ (7 лет)</span></div>
-                </div>
-
-                <!-- 48 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 48</span>
+                    <!-- 48 -->
+                    <div class="article-row">
+                        <span class="article-num">48</span>
                         <span class="article-name">Уничтожение имущества</span>
+                        <span class="article-penalty"><span class="fine">штраф 35 000 руб.</span> или <span class="stars">★★ (2 года)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 35 000 руб.</span> или <span class="stars">★★ (2 года)</span></div>
-                </div>
-
-                <!-- 48-1 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 48-1</span>
+                    <!-- 48-1 -->
+                    <div class="article-row">
+                        <span class="article-num">48-1</span>
                         <span class="article-name">Порча госимущества</span>
+                        <span class="article-penalty"><span class="fine">штраф 50 000 руб.</span> или <span class="stars">★★★ (3 года)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 50 000 руб.</span> или <span class="stars">★★★ (3 года)</span></div>
-                </div>
-
-                <!-- 49.1 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 49.1</span>
-                        <span class="article-name">Угон автомобиля (ч.1)</span>
+                    <!-- 49.1 -->
+                    <div class="article-row">
+                        <span class="article-num">49.1</span>
+                        <span class="article-name">Угон автомобиля</span>
+                        <span class="article-penalty"><span class="fine">штраф 35 000 руб.</span> или <span class="stars">★★ (2 года)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 35 000 руб.</span> или <span class="stars">★★ (2 года)</span></div>
-                </div>
-                <!-- 49.2 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 49.2</span>
-                        <span class="article-name">Угон служебного авто (ч.2)</span>
+                    <!-- 49.2 -->
+                    <div class="article-row">
+                        <span class="article-num">49.2</span>
+                        <span class="article-name">Угон служебного авто</span>
+                        <span class="article-penalty"><span class="fine">штраф 100 000 руб.</span> или <span class="stars">★★★★ (4 года)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 100 000 руб.</span> или <span class="stars">★★★★ (4 года)</span></div>
-                </div>
-
-                <!-- 53 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 53</span>
+                    <!-- 53 -->
+                    <div class="article-row">
+                        <span class="article-num">53</span>
                         <span class="article-name">Террористический акт</span>
+                        <span class="article-penalty"><span class="stars">★★★★★★ (8 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★★★★ (8 лет)</span></div>
-                </div>
-
-                <!-- 55 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 55</span>
+                    <!-- 55 -->
+                    <div class="article-row">
+                        <span class="article-num">55</span>
                         <span class="article-name">Захват заложника</span>
+                        <span class="article-penalty"><span class="stars">★★★★★★ (7 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★★★★ (7 лет)</span></div>
-                </div>
-
-                <!-- 56 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 56</span>
+                    <!-- 56 -->
+                    <div class="article-row">
+                        <span class="article-num">56</span>
                         <span class="article-name">Ложное сообщение о теракте</span>
+                        <span class="article-penalty"><span class="stars">★★★★ (6 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★★ (6 лет)</span></div>
-                </div>
-
-                <!-- 57 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 57</span>
+                    <!-- 57 -->
+                    <div class="article-row">
+                        <span class="article-num">57</span>
                         <span class="article-name">Незаконное вооружённое формирование</span>
+                        <span class="article-penalty"><span class="stars">★★★★★ (7 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★★★ (7 лет)</span></div>
-                </div>
-
-                <!-- 58 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 58</span>
+                    <!-- 58 -->
+                    <div class="article-row">
+                        <span class="article-num">58</span>
                         <span class="article-name">Бандитизм</span>
+                        <span class="article-penalty"><span class="stars">★★★★★★ (8 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★★★★ (8 лет)</span></div>
-                </div>
-
-                <!-- 60 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 60</span>
+                    <!-- 60 -->
+                    <div class="article-row">
+                        <span class="article-num">60</span>
                         <span class="article-name">Массовые беспорядки</span>
+                        <span class="article-penalty"><span class="stars">★★★ (5 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★ (5 лет)</span></div>
-                </div>
-
-                <!-- 61 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 61</span>
+                    <!-- 61 -->
+                    <div class="article-row">
+                        <span class="article-num">61</span>
                         <span class="article-name">Хулиганство</span>
+                        <span class="article-penalty"><span class="fine">штраф 20 000 руб.</span> или <span class="stars">★★ (3 года)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 20 000 руб.</span> или <span class="stars">★★ (3 года)</span></div>
-                </div>
-
-                <!-- 62.1 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 62.1</span>
-                        <span class="article-name">Проникновение на закрытый объект (ч.1)</span>
+                    <!-- 62.1 -->
+                    <div class="article-row">
+                        <span class="article-num">62.1</span>
+                        <span class="article-name">Проникновение на закрытый объект</span>
+                        <span class="article-penalty"><span class="fine">штраф 40 000 руб.</span> или <span class="stars">★★★ (4 года)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 40 000 руб.</span> или <span class="stars">★★★ (4 года)</span></div>
-                </div>
-                <!-- 62.2 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 62.2</span>
-                        <span class="article-name">Проникновение с преступлениями (ч.2)</span>
+                    <!-- 62.2 -->
+                    <div class="article-row">
+                        <span class="article-num">62.2</span>
+                        <span class="article-name">Проникновение с преступлениями</span>
+                        <span class="article-penalty"><span class="stars">★★★ (5 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★ (5 лет)</span></div>
-                </div>
-                <!-- 62.3 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 62.3</span>
-                        <span class="article-name">Проникновение на военный объект (ч.3)</span>
+                    <!-- 62.3 -->
+                    <div class="article-row">
+                        <span class="article-num">62.3</span>
+                        <span class="article-name">Проникновение на военный объект</span>
+                        <span class="article-penalty"><span class="fine">штраф 80 000 руб.</span> или <span class="stars">★★★ (5 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 80 000 руб.</span> или <span class="stars">★★★ (5 лет)</span></div>
-                </div>
-                <!-- 62.4 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 62.4</span>
-                        <span class="article-name">Проникновение госслужащим (ч.4)</span>
+                    <!-- 62.4 -->
+                    <div class="article-row">
+                        <span class="article-num">62.4</span>
+                        <span class="article-name">Проникновение госслужащим</span>
+                        <span class="article-penalty"><span class="fine">штраф 600 000 руб.</span> или <span class="stars">★★★ (4 года)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 600 000 руб.</span> или <span class="stars">★★★ (4 года)</span></div>
-                </div>
-
-                <!-- 63.1 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 63.1</span>
+                    <!-- 63.1 -->
+                    <div class="article-row">
+                        <span class="article-num">63.1</span>
                         <span class="article-name">Незаконный оборот оружия (ч.1)</span>
+                        <span class="article-penalty"><span class="stars">★★★ (4 года)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★ (4 года)</span></div>
-                </div>
-                <!-- 63.2 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 63.2</span>
+                    <!-- 63.2 -->
+                    <div class="article-row">
+                        <span class="article-num">63.2</span>
                         <span class="article-name">Незаконный оборот СИЗ (ч.2)</span>
+                        <span class="article-penalty"><span class="stars">★★★ (4 года)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★ (4 года)</span></div>
-                </div>
-                <!-- 63.3 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 63.3</span>
-                        <span class="article-name">Открытое ношение оружия (ч.3)</span>
+                    <!-- 63.3 -->
+                    <div class="article-row">
+                        <span class="article-num">63.3</span>
+                        <span class="article-name">Открытое ношение оружия</span>
+                        <span class="article-penalty"><span class="stars">★★★ (5 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★ (5 лет)</span></div>
-                </div>
-                <!-- 63.4 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 63.4</span>
-                        <span class="article-name">Причинение вреда с оружием (ч.4)</span>
+                    <!-- 63.4 -->
+                    <div class="article-row">
+                        <span class="article-num">63.4</span>
+                        <span class="article-name">Причинение вреда с оружием</span>
+                        <span class="article-penalty"><span class="stars">★★★★ (6 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★★ (6 лет)</span></div>
-                </div>
-
-                <!-- 64 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 64</span>
+                    <!-- 64 -->
+                    <div class="article-row">
+                        <span class="article-num">64</span>
                         <span class="article-name">Наркотики (без сбыта)</span>
+                        <span class="article-penalty"><span class="stars">★★★ (5 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★ (5 лет)</span></div>
-                </div>
-
-                <!-- 64.1 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 64.1</span>
+                    <!-- 64.1 -->
+                    <div class="article-row">
+                        <span class="article-num">64.1</span>
                         <span class="article-name">Сбыт наркотиков</span>
+                        <span class="article-penalty"><span class="stars">★★★★ (6 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★★ (6 лет)</span></div>
-                </div>
-
-                <!-- 65 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 65</span>
+                    <!-- 65 -->
+                    <div class="article-row">
+                        <span class="article-num">65</span>
                         <span class="article-name">Организация проституции</span>
+                        <span class="article-penalty"><span class="stars">★★ (4 года)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★ (4 года)</span></div>
-                </div>
-
-                <!-- 66 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 66</span>
+                    <!-- 66 -->
+                    <div class="article-row">
+                        <span class="article-num">66</span>
                         <span class="article-name">Жестокое обращение с животными</span>
+                        <span class="article-penalty"><span class="stars">★★ (4 года)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★ (4 года)</span></div>
-                </div>
-
-                <!-- 67.1 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 67.1</span>
+                    <!-- 67.1 -->
+                    <div class="article-row">
+                        <span class="article-num">67.1</span>
                         <span class="article-name">Неуплата штрафа (до 30 тыс.)</span>
+                        <span class="article-penalty"><span class="stars">★★★ (3 года)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★ (3 года)</span></div>
-                </div>
-                <!-- 67.2 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 67.2</span>
+                    <!-- 67.2 -->
+                    <div class="article-row">
+                        <span class="article-num">67.2</span>
                         <span class="article-name">Неуплата штрафа (30-50 тыс.)</span>
+                        <span class="article-penalty"><span class="stars">★★★ (5 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★ (5 лет)</span></div>
-                </div>
-                <!-- 67.3 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 67.3</span>
-                        <span class="article-name">Неуплата штрафа (более 50 тыс.)</span>
+                    <!-- 67.3 -->
+                    <div class="article-row">
+                        <span class="article-num">67.3</span>
+                        <span class="article-name">Неуплата штрафа (>50 тыс.)</span>
+                        <span class="article-penalty"><span class="stars">★★★★ (6 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★★ (6 лет)</span></div>
-                </div>
-
-                <!-- 68.1 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 68.1</span>
+                    <!-- 68.1 -->
+                    <div class="article-row">
+                        <span class="article-num">68.1</span>
                         <span class="article-name">Нарушение ПДД (тяжкий вред)</span>
+                        <span class="article-penalty"><span class="stars">★★★ (3 года)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★ (3 года)</span></div>
-                </div>
-                <!-- 68.2 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 68.2</span>
+                    <!-- 68.2 -->
+                    <div class="article-row">
+                        <span class="article-num">68.2</span>
                         <span class="article-name">Нарушение ПДД (смерть)</span>
+                        <span class="article-penalty"><span class="stars">★★★★ (4 года)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★★ (4 года)</span></div>
-                </div>
-                <!-- 68.3 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 68.3</span>
+                    <!-- 68.3 -->
+                    <div class="article-row">
+                        <span class="article-num">68.3</span>
                         <span class="article-name">Неисполнение предписаний</span>
+                        <span class="article-penalty"><span class="fine">штраф 20 000 руб.</span> или <span class="stars">★★ (2 года)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 20 000 руб.</span> или <span class="stars">★★ (2 года)</span></div>
-                </div>
-                <!-- 68.4 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 68.4</span>
+                    <!-- 68.4 -->
+                    <div class="article-row">
+                        <span class="article-num">68.4</span>
                         <span class="article-name">Наезд на человека</span>
+                        <span class="article-penalty"><span class="fine">штраф 30 000 руб.</span> или <span class="stars">★★ (2 года)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 30 000 руб.</span> или <span class="stars">★★ (2 года)</span></div>
-                </div>
-                <!-- 68.5 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 68.5</span>
+                    <!-- 68.5 -->
+                    <div class="article-row">
+                        <span class="article-num">68.5</span>
                         <span class="article-name">Нарушение ПДД госслужащим</span>
+                        <span class="article-penalty"><span class="stars">★★★★ (5 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★★ (5 лет)</span></div>
-                </div>
-
-                <!-- 69 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 69</span>
+                    <!-- 69 -->
+                    <div class="article-row">
+                        <span class="article-num">69</span>
                         <span class="article-name">Государственная измена</span>
+                        <span class="article-penalty"><span class="stars">★★★★★★ (15 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★★★★ (15 лет)</span></div>
-                </div>
-
-                <!-- 70 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 70</span>
+                    <!-- 70 -->
+                    <div class="article-row">
+                        <span class="article-num">70</span>
                         <span class="article-name">Посягательство на жизнь госдеятеля</span>
+                        <span class="article-penalty"><span class="stars">★★★★ (5 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★★ (5 лет)</span></div>
-                </div>
-
-                <!-- 71 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 71</span>
+                    <!-- 71 -->
+                    <div class="article-row">
+                        <span class="article-num">71</span>
                         <span class="article-name">Вооружённый мятеж</span>
+                        <span class="article-penalty"><span class="stars">★★★★★★ (10 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★★★★ (10 лет)</span></div>
-                </div>
-
-                <!-- 72.1 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 72.1</span>
+                    <!-- 72.1 -->
+                    <div class="article-row">
+                        <span class="article-num">72.1</span>
                         <span class="article-name">Экстремизм (занятие)</span>
+                        <span class="article-penalty"><span class="stars">★★★★★ (6 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★★★ (6 лет)</span></div>
-                </div>
-                <!-- 72.2 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 72.2</span>
+                    <!-- 72.2 -->
+                    <div class="article-row">
+                        <span class="article-num">72.2</span>
                         <span class="article-name">Экстремизм (призывы)</span>
+                        <span class="article-penalty"><span class="stars">★★★ (4 года)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★ (4 года)</span></div>
-                </div>
-
-                <!-- 73.1 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 73.1</span>
+                    <!-- 73.1 -->
+                    <div class="article-row">
+                        <span class="article-num">73.1</span>
                         <span class="article-name">Призывы против безопасности (ч.1)</span>
+                        <span class="article-penalty"><span class="stars">★★★★ (5 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★★ (5 лет)</span></div>
-                </div>
-                <!-- 73.2 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 73.2</span>
+                    <!-- 73.2 -->
+                    <div class="article-row">
+                        <span class="article-num">73.2</span>
                         <span class="article-name">Призывы к нарушению целостности (ч.2)</span>
+                        <span class="article-penalty"><span class="fine">штраф 50 000 руб.</span> или <span class="stars">★★★ (4 года)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 50 000 руб.</span> или <span class="stars">★★★ (4 года)</span></div>
-                </div>
-
-                <!-- 74 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 74</span>
+                    <!-- 74 -->
+                    <div class="article-row">
+                        <span class="article-num">74</span>
                         <span class="article-name">Разглашение гостайны</span>
+                        <span class="article-penalty"><span class="stars">★★★★ (4 года)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★★ (4 года)</span></div>
-                </div>
-
-                <!-- 75 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 75</span>
+                    <!-- 75 -->
+                    <div class="article-row">
+                        <span class="article-num">75</span>
                         <span class="article-name">Незаконное получение гостайны</span>
+                        <span class="article-penalty"><span class="stars">★★★★ (4 года)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★★ (4 года)</span></div>
-                </div>
-
-                <!-- 76.1 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 76.1</span>
+                    <!-- 76.1 -->
+                    <div class="article-row">
+                        <span class="article-num">76.1</span>
                         <span class="article-name">Злоупотребление полномочиями (ч.1)</span>
+                        <span class="article-penalty"><span class="fine">штраф 500 000 руб.</span> или <span class="stars">★★ (3 года)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 500 000 руб.</span> или <span class="stars">★★ (3 года)</span></div>
-                </div>
-                <!-- 76.2 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 76.2</span>
+                    <!-- 76.2 -->
+                    <div class="article-row">
+                        <span class="article-num">76.2</span>
                         <span class="article-name">Злоупотребление (руководитель, ч.2)</span>
+                        <span class="article-penalty"><span class="fine">штраф 1 000 000 руб.</span> или <span class="stars">★★★ (6 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 1 000 000 руб.</span> или <span class="stars">★★★ (6 лет)</span></div>
-                </div>
-                <!-- 76.3 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 76.3</span>
+                    <!-- 76.3 -->
+                    <div class="article-row">
+                        <span class="article-num">76.3</span>
                         <span class="article-name">Злоупотребление (тяжкие последствия)</span>
+                        <span class="article-penalty"><span class="stars">★★★★ (7 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★★ (7 лет)</span></div>
-                </div>
-
-                <!-- 77.1 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 77.1</span>
+                    <!-- 77.1 -->
+                    <div class="article-row">
+                        <span class="article-num">77.1</span>
                         <span class="article-name">Превышение полномочий (ч.1)</span>
+                        <span class="article-penalty"><span class="fine">штраф 600 000 руб.</span> или <span class="stars">★★ (3 года)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 600 000 руб.</span> или <span class="stars">★★ (3 года)</span></div>
-                </div>
-                <!-- 77.2 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 77.2</span>
+                    <!-- 77.2 -->
+                    <div class="article-row">
+                        <span class="article-num">77.2</span>
                         <span class="article-name">Превышение (руководитель, ч.2)</span>
+                        <span class="article-penalty"><span class="fine">штраф 2 000 000 руб.</span> или <span class="stars">★★★ (6 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 2 000 000 руб.</span> или <span class="stars">★★★ (6 лет)</span></div>
-                </div>
-                <!-- 77.3 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 77.3</span>
+                    <!-- 77.3 -->
+                    <div class="article-row">
+                        <span class="article-num">77.3</span>
                         <span class="article-name">Превышение (с насилием/оружием, ч.3)</span>
+                        <span class="article-penalty"><span class="stars">★★★ (3-7 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★ (3-7 лет)</span></div>
-                </div>
-                <!-- 77.4 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 77.4</span>
+                    <!-- 77.4 -->
+                    <div class="article-row">
+                        <span class="article-num">77.4</span>
                         <span class="article-name">Незаконное задержание (ч.4)</span>
+                        <span class="article-penalty"><span class="fine">штраф 700 000 руб.</span> или <span class="stars">★★★ (3 года)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 700 000 руб.</span> или <span class="stars">★★★ (3 года)</span></div>
-                </div>
-                <!-- 77.5 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 77.5</span>
+                    <!-- 77.5 -->
+                    <div class="article-row">
+                        <span class="article-num">77.5</span>
                         <span class="article-name">Незаконные требования (ч.5)</span>
+                        <span class="article-penalty"><span class="fine">штраф 800 000 руб.</span> или <span class="stars">★★★ (3 года)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 800 000 руб.</span> или <span class="stars">★★★ (3 года)</span></div>
-                </div>
-
-                <!-- 78 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 78</span>
+                    <!-- 78 -->
+                    <div class="article-row">
+                        <span class="article-num">78</span>
                         <span class="article-name">Неисполнение приказа</span>
+                        <span class="article-penalty"><span class="fine">штраф 500 000 руб.</span> или <span class="stars">★★★ (3 года)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 500 000 руб.</span> или <span class="stars">★★★ (3 года)</span></div>
-                </div>
-
-                <!-- 79 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 79</span>
+                    <!-- 79 -->
+                    <div class="article-row">
+                        <span class="article-num">79</span>
                         <span class="article-name">Получение/дача взятки</span>
+                        <span class="article-penalty"><span class="stars">★★★★★★ (8 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★★★★ (8 лет)</span></div>
-                </div>
-
-                <!-- 80.1 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 80.1</span>
-                        <span class="article-name">Халатность (ненадлежащее исполнение)</span>
+                    <!-- 80.1 -->
+                    <div class="article-row">
+                        <span class="article-num">80.1</span>
+                        <span class="article-name">Халатность (ненадлежащее)</span>
+                        <span class="article-penalty"><span class="fine">штраф 800 000 руб.</span> или <span class="stars">★ (2 года)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 800 000 руб.</span> или <span class="stars">★ (2 года)</span></div>
-                </div>
-                <!-- 80.2 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 80.2</span>
+                    <!-- 80.2 -->
+                    <div class="article-row">
+                        <span class="article-num">80.2</span>
                         <span class="article-name">Халатность (неисполнение)</span>
+                        <span class="article-penalty"><span class="stars">★★★ (6 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★ (6 лет)</span></div>
-                </div>
-                <!-- 80.3 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 80.3</span>
+                    <!-- 80.3 -->
+                    <div class="article-row">
+                        <span class="article-num">80.3</span>
                         <span class="article-name">Нарушение норм задержания</span>
+                        <span class="article-penalty"><span class="fine">штраф 1 000 000 руб.</span> или <span class="stars">★★ (3 года)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 1 000 000 руб.</span> или <span class="stars">★★ (3 года)</span></div>
-                </div>
-                <!-- 80.4 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 80.4</span>
+                    <!-- 80.4 -->
+                    <div class="article-row">
+                        <span class="article-num">80.4</span>
                         <span class="article-name">Отказ в правах задержанного</span>
+                        <span class="article-penalty"><span class="fine">штраф 1 250 000 руб.</span> или <span class="stars">★★ (3 года)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 1 250 000 руб.</span> или <span class="stars">★★ (3 года)</span></div>
-                </div>
-
-                <!-- 81.1 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 81.1</span>
+                    <!-- 81.1 -->
+                    <div class="article-row">
+                        <span class="article-num">81.1</span>
                         <span class="article-name">Воспрепятствование правосудию (суд)</span>
+                        <span class="article-penalty"><span class="stars">★★★★ (6 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★★ (6 лет)</span></div>
-                </div>
-                <!-- 81.2 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 81.2</span>
+                    <!-- 81.2 -->
+                    <div class="article-row">
+                        <span class="article-num">81.2</span>
                         <span class="article-name">Воспрепятствование (прокурор)</span>
+                        <span class="article-penalty"><span class="stars">★★★ (3 года)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★ (3 года)</span></div>
-                </div>
-                <!-- 81.3 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 81.3</span>
+                    <!-- 81.3 -->
+                    <div class="article-row">
+                        <span class="article-num">81.3</span>
                         <span class="article-name">Воспрепятствование (служебное положение)</span>
+                        <span class="article-penalty"><span class="stars">★★★ (5 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★ (5 лет)</span></div>
-                </div>
-
-                <!-- 82 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 82</span>
+                    <!-- 82 -->
+                    <div class="article-row">
+                        <span class="article-num">82</span>
                         <span class="article-name">Влияние на уголовное дело</span>
+                        <span class="article-penalty"><span class="stars">★★★★ (6 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★★ (6 лет)</span></div>
-                </div>
-
-                <!-- 83 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 83</span>
+                    <!-- 83 -->
+                    <div class="article-row">
+                        <span class="article-num">83</span>
                         <span class="article-name">Влияние на судебное дело</span>
+                        <span class="article-penalty"><span class="stars">★★★★ (6 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★★ (6 лет)</span></div>
-                </div>
-
-                <!-- 84 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 84</span>
+                    <!-- 84 -->
+                    <div class="article-row">
+                        <span class="article-num">84</span>
                         <span class="article-name">Неуважение к суду</span>
+                        <span class="article-penalty"><span class="fine">штраф 250 000 руб.</span> или <span class="stars">★★ (2 года)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 250 000 руб.</span> или <span class="stars">★★ (2 года)</span></div>
-                </div>
-
-                <!-- 85 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 85</span>
+                    <!-- 85 -->
+                    <div class="article-row">
+                        <span class="article-num">85</span>
                         <span class="article-name">Привлечение заведомо невиновного</span>
+                        <span class="article-penalty"><span class="stars">★★★★ (10 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★★ (10 лет)</span></div>
-                </div>
-
-                <!-- 86 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 86</span>
+                    <!-- 86 -->
+                    <div class="article-row">
+                        <span class="article-num">86</span>
                         <span class="article-name">Заведомо ложный донос</span>
+                        <span class="article-penalty"><span class="fine">штраф 300 000 руб.</span> или <span class="stars">★★★★ (4 года)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 300 000 руб.</span> или <span class="stars">★★★★ (4 года)</span></div>
-                </div>
-
-                <!-- 86-1 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 86-1</span>
+                    <!-- 86-1 -->
+                    <div class="article-row">
+                        <span class="article-num">86-1</span>
                         <span class="article-name">Заведомо ложные показания</span>
+                        <span class="article-penalty"><span class="stars">★★★ (6 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★ (6 лет)</span></div>
-                </div>
-
-                <!-- 87 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 87</span>
+                    <!-- 87 -->
+                    <div class="article-row">
+                        <span class="article-num">87</span>
                         <span class="article-name">Побег из-под стражи</span>
+                        <span class="article-penalty"><span class="stars">★★★★★★ (8 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★★★★ (8 лет)</span></div>
-                </div>
-
-                <!-- 88 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 88</span>
+                    <!-- 88 -->
+                    <div class="article-row">
+                        <span class="article-num">88</span>
                         <span class="article-name">Неисполнение приговора суда</span>
+                        <span class="article-penalty"><span class="stars">★★★★ (12 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★★ (12 лет)</span></div>
-                </div>
-
-                <!-- 88-1 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 88-1</span>
+                    <!-- 88-1 -->
+                    <div class="article-row">
+                        <span class="article-num">88-1</span>
                         <span class="article-name">Неисполнение решения прокурора/СК</span>
+                        <span class="article-penalty"><span class="stars">★★★★ (10 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★★ (10 лет)</span></div>
-                </div>
-
-                <!-- 89 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 89</span>
+                    <!-- 89 -->
+                    <div class="article-row">
+                        <span class="article-num">89</span>
                         <span class="article-name">Посягательство на жизнь сотрудника ПО</span>
+                        <span class="article-penalty"><span class="stars">★★★★ (6 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★★ (6 лет)</span></div>
-                </div>
-
-                <!-- 90.1 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 90.1</span>
+                    <!-- 90.1 -->
+                    <div class="article-row">
+                        <span class="article-num">90.1</span>
                         <span class="article-name">Насилие (не опасное) в отношении власти</span>
+                        <span class="article-penalty"><span class="stars">★★★ (4 года)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★ (4 года)</span></div>
-                </div>
-                <!-- 90.2 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 90.2</span>
+                    <!-- 90.2 -->
+                    <div class="article-row">
+                        <span class="article-num">90.2</span>
                         <span class="article-name">Насилие (опасное) в отношении власти</span>
+                        <span class="article-penalty"><span class="stars">★★★★ (6 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★★ (6 лет)</span></div>
-                </div>
-                <!-- 90.3 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 90.3</span>
+                    <!-- 90.3 -->
+                    <div class="article-row">
+                        <span class="article-num">90.3</span>
                         <span class="article-name">Угроза насилием в отношении власти</span>
+                        <span class="article-penalty"><span class="stars">★★ (2 года)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★ (2 года)</span></div>
-                </div>
-
-                <!-- 91 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 91</span>
+                    <!-- 91 -->
+                    <div class="article-row">
+                        <span class="article-num">91</span>
                         <span class="article-name">Оскорбление представителя власти</span>
+                        <span class="article-penalty"><span class="fine">штраф 50 000 руб.</span> или <span class="stars">★★ (3 года)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 50 000 руб.</span> или <span class="stars">★★ (3 года)</span></div>
-                </div>
-
-                <!-- 92.1 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 92.1</span>
+                    <!-- 92.1 -->
+                    <div class="article-row">
+                        <span class="article-num">92.1</span>
                         <span class="article-name">Подделка документов (с фото)</span>
+                        <span class="article-penalty"><span class="fine">штраф 250 000 – 500 000 руб.</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 250 000 – 500 000 руб.</span></div>
-                </div>
-                <!-- 92.2 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 92.2</span>
+                    <!-- 92.2 -->
+                    <div class="article-row">
+                        <span class="article-num">92.2</span>
                         <span class="article-name">Подделка документов (ч.2)</span>
+                        <span class="article-penalty"><span class="stars">★★★★ (6 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★★ (6 лет)</span></div>
-                </div>
-
-                <!-- 93 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 93</span>
+                    <!-- 93 -->
+                    <div class="article-row">
+                        <span class="article-num">93</span>
                         <span class="article-name">Помеха деятельности сотрудника госвласти</span>
+                        <span class="article-penalty"><span class="fine">штраф 25 000 руб.</span> или <span class="stars">★★ (3 года)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 25 000 руб.</span> или <span class="stars">★★ (3 года)</span></div>
-                </div>
-
-                <!-- 94 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 94</span>
+                    <!-- 94 -->
+                    <div class="article-row">
+                        <span class="article-num">94</span>
                         <span class="article-name">Присвоение полномочий должностного лица</span>
+                        <span class="article-penalty"><span class="fine">штраф 350 000 руб.</span> или <span class="stars">★★★ (6 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 350 000 руб.</span> или <span class="stars">★★★ (6 лет)</span></div>
-                </div>
-
-                <!-- 95 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 95</span>
+                    <!-- 95 -->
+                    <div class="article-row">
+                        <span class="article-num">95</span>
                         <span class="article-name">Надругательство над гербом/флагом</span>
+                        <span class="article-penalty"><span class="fine">штраф 100 000 руб.</span> или <span class="stars">★ (2 года)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 100 000 руб.</span> или <span class="stars">★ (2 года)</span></div>
-                </div>
-
-                <!-- 96.1 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 96.1</span>
+                    <!-- 96.1 -->
+                    <div class="article-row">
+                        <span class="article-num">96.1</span>
                         <span class="article-name">Уничтожение объектов культурного наследия (ч.1)</span>
+                        <span class="article-penalty"><span class="fine">штраф 150 000 руб.</span> или <span class="stars">★★ (2 года)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 150 000 руб.</span> или <span class="stars">★★ (2 года)</span></div>
-                </div>
-                <!-- 96.2 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 96.2</span>
+                    <!-- 96.2 -->
+                    <div class="article-row">
+                        <span class="article-num">96.2</span>
                         <span class="article-name">Уничтожение объектов культурного наследия (ч.2)</span>
+                        <span class="article-penalty"><span class="fine">штраф 300 000 руб.</span> или <span class="stars">★★★ (6 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 300 000 руб.</span> или <span class="stars">★★★ (6 лет)</span></div>
-                </div>
-
-                <!-- 97.1 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 97.1</span>
+                    <!-- 97.1 -->
+                    <div class="article-row">
+                        <span class="article-num">97.1</span>
                         <span class="article-name">Надругательство над воинскими захоронениями (ч.1)</span>
+                        <span class="article-penalty"><span class="fine">штраф 250 000 руб.</span> или <span class="stars">★★★★ (4 года)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 250 000 руб.</span> или <span class="stars">★★★★ (4 года)</span></div>
-                </div>
-                <!-- 97.2 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 97.2</span>
+                    <!-- 97.2 -->
+                    <div class="article-row">
+                        <span class="article-num">97.2</span>
                         <span class="article-name">Надругательство над воинскими захоронениями (ч.2)</span>
+                        <span class="article-penalty"><span class="fine">штраф 500 000 руб.</span> или <span class="stars">★★★★ (7 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 500 000 руб.</span> или <span class="stars">★★★★ (7 лет)</span></div>
-                </div>
-
-                <!-- 98.1 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 98.1</span>
+                    <!-- 98.1 -->
+                    <div class="article-row">
+                        <span class="article-num">98.1</span>
                         <span class="article-name">Надругательство над телами умерших (ч.1)</span>
+                        <span class="article-penalty"><span class="fine">штраф 50 000 руб.</span> или <span class="stars">★ (1 год)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 50 000 руб.</span> или <span class="stars">★ (1 год)</span></div>
-                </div>
-                <!-- 98.2 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 98.2</span>
+                    <!-- 98.2 -->
+                    <div class="article-row">
+                        <span class="article-num">98.2</span>
                         <span class="article-name">Надругательство над телами умерших (ч.2)</span>
+                        <span class="article-penalty"><span class="fine">штраф 100 000 руб.</span> или <span class="stars">★★ (3 года)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 100 000 руб.</span> или <span class="stars">★★ (3 года)</span></div>
-                </div>
-
-                <!-- 99.1 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 99.1</span>
+                    <!-- 99.1 -->
+                    <div class="article-row">
+                        <span class="article-num">99.1</span>
                         <span class="article-name">Подкуп избирателей (ч.1)</span>
+                        <span class="article-penalty"><span class="stars">★★★★ (6 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★★ (6 лет)</span></div>
-                </div>
-                <!-- 99.2 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 99.2</span>
+                    <!-- 99.2 -->
+                    <div class="article-row">
+                        <span class="article-num">99.2</span>
                         <span class="article-name">Подкуп избирателей (ч.2)</span>
+                        <span class="article-penalty"><span class="stars">★★★★ (8 лет)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">★★★★ (8 лет)</span></div>
                 </div>
             </div>
 
             <!-- ПРАВАЯ КОЛОНКА - КОАП РФ (без ПДД) -->
             <div class="column">
                 <h2>КОДЕКС ОБ АДМИНИСТРАТИВНЫХ ПРАВОНАРУШЕНИЯХ</h2>
-
-                <!-- 4.7 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 4.7</span>
+                <div class="article-table">
+                    <!-- 4.7 -->
+                    <div class="article-row">
+                        <span class="article-num">4.7</span>
                         <span class="article-name">Ответственность госслужащего</span>
+                        <span class="article-penalty"><span class="fine">удвоение суммы штрафа</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">удвоение суммы штрафа</span></div>
-                </div>
-
-                <!-- 5.1 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 5.1</span>
+                    <!-- 5.1 -->
+                    <div class="article-row">
+                        <span class="article-num">5.1</span>
                         <span class="article-name">Нарушение порядка рассмотрения обращений</span>
+                        <span class="article-penalty"><span class="fine">штраф 20 000 – 50 000 руб.</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 20 000 – 50 000 руб.</span></div>
-                </div>
-
-                <!-- 5.2 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 5.2</span>
+                    <!-- 5.2 -->
+                    <div class="article-row">
+                        <span class="article-num">5.2</span>
                         <span class="article-name">Оскорбление</span>
+                        <span class="article-penalty"><span class="fine">штраф 10 000 – 20 000 руб.</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 10 000 – 20 000 руб.</span></div>
-                </div>
-
-                <!-- 5.3 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 5.3</span>
+                    <!-- 5.3 -->
+                    <div class="article-row">
+                        <span class="article-num">5.3</span>
                         <span class="article-name">Дискриминация</span>
+                        <span class="article-penalty"><span class="fine">штраф 5 000 – 15 000 руб.</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 5 000 – 15 000 руб.</span></div>
-                </div>
-
-                <!-- 5.5 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 5.5</span>
+                    <!-- 5.5 -->
+                    <div class="article-row">
+                        <span class="article-num">5.5</span>
                         <span class="article-name">Нарушение тайны голосования</span>
+                        <span class="article-penalty"><span class="stars">арест ★★ (14 суток)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">арест ★★ (14 суток)</span></div>
-                </div>
-
-                <!-- 5.6 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 5.6</span>
+                    <!-- 5.6 -->
+                    <div class="article-row">
+                        <span class="article-num">5.6</span>
                         <span class="article-name">Агитация в день голосования</span>
+                        <span class="article-penalty"><span class="stars">арест ★★ (14 суток)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">арест ★★ (14 суток)</span></div>
-                </div>
-
-                <!-- 6.1 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 6.1</span>
+                    <!-- 6.1 -->
+                    <div class="article-row">
+                        <span class="article-num">6.1</span>
                         <span class="article-name">Воспрепятствование медпомощи</span>
+                        <span class="article-penalty"><span class="fine">штраф 10 000 – 15 000 руб.</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 10 000 – 15 000 руб.</span></div>
-                </div>
-
-                <!-- 6.2 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 6.2</span>
+                    <!-- 6.2 -->
+                    <div class="article-row">
+                        <span class="article-num">6.2</span>
                         <span class="article-name">Нарушение территориального принципа</span>
+                        <span class="article-penalty"><span class="fine">штраф на организацию 50 000 – 90 000 руб.</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф на организацию 50 000 – 90 000 руб.</span></div>
-                </div>
-
-                <!-- 6.3 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 6.3</span>
+                    <!-- 6.3 -->
+                    <div class="article-row">
+                        <span class="article-num">6.3</span>
                         <span class="article-name">Неоказание медпомощи</span>
+                        <span class="article-penalty"><span class="fine">штраф 10 000 – 15 000 руб.</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 10 000 – 15 000 руб.</span></div>
-                </div>
-
-                <!-- 6.4 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 6.4</span>
+                    <!-- 6.4 -->
+                    <div class="article-row">
+                        <span class="article-num">6.4</span>
                         <span class="article-name">Отсутствие медкнижки</span>
+                        <span class="article-penalty"><span class="fine">штраф 15 000 – 25 000 руб.</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 15 000 – 25 000 руб.</span></div>
-                </div>
-
-                <!-- 6.5 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 6.5</span>
+                    <!-- 6.5 -->
+                    <div class="article-row">
+                        <span class="article-num">6.5</span>
                         <span class="article-name">Непрохождение медпроверки организацией</span>
+                        <span class="article-penalty"><span class="fine">штраф на организацию 50 000 – 90 000 руб.</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф на организацию 50 000 – 90 000 руб.</span></div>
-                </div>
-
-                <!-- 6.6 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 6.6</span>
+                    <!-- 6.6 -->
+                    <div class="article-row">
+                        <span class="article-num">6.6</span>
                         <span class="article-name">Уклонение от оплаты медуслуг</span>
+                        <span class="article-penalty"><span class="fine">штраф 20 000 руб.</span> или <span class="stars">арест ★★ (14 суток)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 20 000 руб.</span> или <span class="stars">арест ★★ (14 суток)</span></div>
-                </div>
-
-                <!-- 7.1 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 7.1</span>
+                    <!-- 7.1 -->
+                    <div class="article-row">
+                        <span class="article-num">7.1</span>
                         <span class="article-name">Проникновение на частную территорию</span>
+                        <span class="article-penalty"><span class="fine">штраф 10 000 – 20 000 руб.</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 10 000 – 20 000 руб.</span></div>
-                </div>
-
-                <!-- 7.2 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 7.2</span>
+                    <!-- 7.2 -->
+                    <div class="article-row">
+                        <span class="article-num">7.2</span>
                         <span class="article-name">Взлом</span>
+                        <span class="article-penalty"><span class="stars">арест ★★ (14 суток)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="stars">арест ★★ (14 суток)</span></div>
-                </div>
-
-                <!-- 7.3 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 7.3</span>
+                    <!-- 7.3 -->
+                    <div class="article-row">
+                        <span class="article-num">7.3</span>
                         <span class="article-name">Попытка угона ТС</span>
+                        <span class="article-penalty"><span class="fine">штраф 10 000 – 20 000 руб.</span> или <span class="stars">арест ★★ (14 суток)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 10 000 – 20 000 руб.</span> или <span class="stars">арест ★★ (14 суток)</span></div>
-                </div>
-
-                <!-- 7.4 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 7.4</span>
+                    <!-- 7.4 -->
+                    <div class="article-row">
+                        <span class="article-num">7.4</span>
                         <span class="article-name">Браконьерство</span>
+                        <span class="article-penalty"><span class="fine">штраф 20 000 – 30 000 руб.</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 20 000 – 30 000 руб.</span></div>
-                </div>
-
-                <!-- 7.5 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 7.5</span>
+                    <!-- 7.5 -->
+                    <div class="article-row">
+                        <span class="article-num">7.5</span>
                         <span class="article-name">Нарушение правил рыболовства</span>
+                        <span class="article-penalty"><span class="fine">штраф 15 000 – 30 000 руб.</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 15 000 – 30 000 руб.</span></div>
-                </div>
-
-                <!-- 8.1 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 8.1</span>
+                    <!-- 8.1 -->
+                    <div class="article-row">
+                        <span class="article-num">8.1</span>
                         <span class="article-name">Мелкое хулиганство</span>
+                        <span class="article-penalty"><span class="fine">штраф 10 000 – 30 000 руб.</span> или <span class="stars">арест ★ (7 суток)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 10 000 – 30 000 руб.</span> или <span class="stars">арест ★ (7 суток)</span></div>
-                </div>
-
-                <!-- 8.2 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 8.2</span>
+                    <!-- 8.2 -->
+                    <div class="article-row">
+                        <span class="article-num">8.2</span>
                         <span class="article-name">Побои</span>
+                        <span class="article-penalty"><span class="fine">штраф 20 000 – 30 000 руб.</span> или <span class="stars">арест ★ (7 суток)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 20 000 – 30 000 руб.</span> или <span class="stars">арест ★ (7 суток)</span></div>
-                </div>
-
-                <!-- 8.3 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 8.3</span>
+                    <!-- 8.3 -->
+                    <div class="article-row">
+                        <span class="article-num">8.3</span>
                         <span class="article-name">Распитие алкоголя</span>
+                        <span class="article-penalty"><span class="fine">штраф 5 000 – 15 000 руб.</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 5 000 – 15 000 руб.</span></div>
-                </div>
-
-                <!-- 8.4 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 8.4</span>
+                    <!-- 8.4 -->
+                    <div class="article-row">
+                        <span class="article-num">8.4</span>
                         <span class="article-name">Попрошайничество</span>
+                        <span class="article-penalty"><span class="fine">штраф 5 000 – 15 000 руб.</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 5 000 – 15 000 руб.</span></div>
-                </div>
-
-                <!-- 8.5 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 8.5</span>
+                    <!-- 8.5 -->
+                    <div class="article-row">
+                        <span class="article-num">8.5</span>
                         <span class="article-name">Заведомо ложный вызов</span>
+                        <span class="article-penalty"><span class="fine">штраф 10 000 – 20 000 руб.</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 10 000 – 20 000 руб.</span></div>
-                </div>
-
-                <!-- 8.6 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 8.6</span>
+                    <!-- 8.6 -->
+                    <div class="article-row">
+                        <span class="article-num">8.6</span>
                         <span class="article-name">Несанкционированный митинг</span>
+                        <span class="article-penalty"><span class="fine">штраф 20 000 – 30 000 руб.</span> или <span class="stars">арест ★★ (14 суток)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 20 000 – 30 000 руб.</span> или <span class="stars">арест ★★ (14 суток)</span></div>
-                </div>
-
-                <!-- 8.7 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 8.7</span>
+                    <!-- 8.7 -->
+                    <div class="article-row">
+                        <span class="article-num">8.7</span>
                         <span class="article-name">Неповиновение законному распоряжению</span>
+                        <span class="article-penalty"><span class="fine">штраф 15 000 – 30 000 руб.</span> или <span class="stars">арест ★★ (14 суток)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 15 000 – 30 000 руб.</span> или <span class="stars">арест ★★ (14 суток)</span></div>
-                </div>
-
-                <!-- 8.8 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 8.8</span>
+                    <!-- 8.8 -->
+                    <div class="article-row">
+                        <span class="article-num">8.8</span>
                         <span class="article-name">Клевета</span>
+                        <span class="article-penalty"><span class="fine">штраф 10 000 – 20 000 руб.</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 10 000 – 20 000 руб.</span></div>
-                </div>
-
-                <!-- 8.9 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 8.9</span>
+                    <!-- 8.9 -->
+                    <div class="article-row">
+                        <span class="article-num">8.9</span>
                         <span class="article-name">Невыполнение требований прокурора</span>
+                        <span class="article-penalty"><span class="fine">штраф 10 000 – 20 000 руб.</span> (госслужащим 10 окладов)</span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 10 000 – 20 000 руб.</span> (госслужащим 10 окладов)</div>
-                </div>
-
-                <!-- 8.10 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 8.10</span>
+                    <!-- 8.10 -->
+                    <div class="article-row">
+                        <span class="article-num">8.10</span>
                         <span class="article-name">Нарушение исполнительного производства</span>
+                        <span class="article-penalty"><span class="fine">штраф 10 000 – 20 000 руб.</span> (госслужащим 10 окладов)</span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 10 000 – 20 000 руб.</span> (госслужащим 10 окладов)</div>
-                </div>
-
-                <!-- 8.11 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 8.11</span>
+                    <!-- 8.11 -->
+                    <div class="article-row">
+                        <span class="article-num">8.11</span>
                         <span class="article-name">Нарушение правил на охраняемых территориях</span>
+                        <span class="article-penalty"><span class="fine">штраф 10 000 – 20 000 руб.</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 10 000 – 20 000 руб.</span></div>
-                </div>
-
-                <!-- 8.12 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 8.12</span>
+                    <!-- 8.12 -->
+                    <div class="article-row">
+                        <span class="article-num">8.12</span>
                         <span class="article-name">Ношение масок</span>
+                        <span class="article-penalty"><span class="fine">штраф 10 000 – 15 000 руб.</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 10 000 – 15 000 руб.</span></div>
-                </div>
-
-                <!-- 8.13 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 8.13</span>
+                    <!-- 8.13 -->
+                    <div class="article-row">
+                        <span class="article-num">8.13</span>
                         <span class="article-name">Открытое ношение холодного оружия</span>
+                        <span class="article-penalty"><span class="fine">штраф 15 000 – 20 000 руб.</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 15 000 – 20 000 руб.</span></div>
-                </div>
-
-                <!-- 8.14 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 8.14</span>
+                    <!-- 8.14 -->
+                    <div class="article-row">
+                        <span class="article-num">8.14</span>
                         <span class="article-name">Курение в общественном месте</span>
+                        <span class="article-penalty"><span class="fine">штраф 5 000 – 10 000 руб.</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 5 000 – 10 000 руб.</span></div>
-                </div>
-
-                <!-- 8.15 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 8.15</span>
+                    <!-- 8.15 -->
+                    <div class="article-row">
+                        <span class="article-num">8.15</span>
                         <span class="article-name">Нарушение режима ЧП, КТО, комендантского часа</span>
+                        <span class="article-penalty"><span class="fine">штраф 10 000 – 30 000 руб.</span> или <span class="stars">арест ★ (7 суток)</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 10 000 – 30 000 руб.</span> или <span class="stars">арест ★ (7 суток)</span></div>
-                </div>
-
-                <!-- 10.1 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 10.1</span>
+                    <!-- 10.1 -->
+                    <div class="article-row">
+                        <span class="article-num">10.1</span>
                         <span class="article-name">Неисполнение требований о внешнем виде</span>
+                        <span class="article-penalty"><span class="fine">штраф 50 000 – 60 000 руб.</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 50 000 – 60 000 руб.</span></div>
-                </div>
-
-                <!-- 10.2 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 10.2</span>
+                    <!-- 10.2 -->
+                    <div class="article-row">
+                        <span class="article-num">10.2</span>
                         <span class="article-name">Неисполнение требований этики</span>
+                        <span class="article-penalty"><span class="fine">штраф 25 000 – 50 000 руб.</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 25 000 – 50 000 руб.</span></div>
-                </div>
-
-                <!-- 10.3 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 10.3</span>
+                    <!-- 10.3 -->
+                    <div class="article-row">
+                        <span class="article-num">10.3</span>
                         <span class="article-name">Взлёт/посадка без уведомления</span>
+                        <span class="article-penalty"><span class="fine">штраф 50 000 – 100 000 руб.</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 50 000 – 100 000 руб.</span></div>
-                </div>
-
-                <!-- 10.4 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 10.4</span>
+                    <!-- 10.4 -->
+                    <div class="article-row">
+                        <span class="article-num">10.4</span>
                         <span class="article-name">Нарушение правил пользования воздушным пространством</span>
+                        <span class="article-penalty"><span class="fine">штраф 50 000 – 100 000 руб.</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 50 000 – 100 000 руб.</span></div>
-                </div>
-
-                <!-- 11.1 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 11.1</span>
+                    <!-- 11.1 -->
+                    <div class="article-row">
+                        <span class="article-num">11.1</span>
                         <span class="article-name">Нарушение оформления реквизитов</span>
+                        <span class="article-penalty"><span class="fine">штраф 20 000 – 50 000 руб.</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 20 000 – 50 000 руб.</span></div>
-                </div>
-
-                <!-- 11.2 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 11.2</span>
+                    <!-- 11.2 -->
+                    <div class="article-row">
+                        <span class="article-num">11.2</span>
                         <span class="article-name">Нарушение общих требований к созданию документов</span>
+                        <span class="article-penalty"><span class="fine">штраф 50 000 – 75 000 руб.</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 50 000 – 75 000 руб.</span></div>
-                </div>
-
-                <!-- 11.3 -->
-                <div class="article-item">
-                    <div class="article-header">
-                        <span class="article-num">ст. 11.3</span>
+                    <!-- 11.3 -->
+                    <div class="article-row">
+                        <span class="article-num">11.3</span>
                         <span class="article-name">Нарушение специальных требований к созданию документов</span>
+                        <span class="article-penalty"><span class="fine">штраф 20 000 – 35 000 руб.</span></span>
                     </div>
-                    <div class="article-penalty"><span class="fine">штраф 20 000 – 35 000 руб.</span></div>
                 </div>
             </div>
         </div>
